@@ -28,3 +28,30 @@ exports.nearbySearch = function(req, res) {
     console.log("Got error: " + e.message);
   });
 };
+
+
+exports.placeDetails = function(req, res) {
+  var key = window.Google_API_Key;
+  var placeid = req.query.placeid;
+
+  var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + "key=" + key + "&placeid=" + placeid;
+    console.log(url);
+  https.get(url, function(response) {
+    var body ='';
+    response.on('data', function(chunk) {
+      body += chunk;
+    });
+
+    response.on('end', function() {
+      var place = JSON.parse(body);
+      // var locations = places.results;
+
+      console.log('place: ', place)
+      // res.json(locations)
+    });
+  }).on('error', function(e) {
+    console.log("Got error: " + e.message);
+  });
+};
+
+exports.placeDetails({query: {placeid: 'ChIJ6WLDCS00W4YR_w3C9RY4Fdc'}});
