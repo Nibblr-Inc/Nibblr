@@ -3,7 +3,7 @@ angular.module('nibblr')
 .directive('event', function() {
   return {
     scope: {
-      event: <
+      event: '<'
     },
     controller: function() {
       console.log('in angular module')
