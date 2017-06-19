@@ -1,16 +1,15 @@
 angular.module('nibblr')
 
-.directive('event', function() {
+.directive('eventList', function() {
   return {
     scope: {
-      event: '<'
+      events: '<'
     },
     controller: function() {
-      console.log('in angular module')
     },
     controllerAs: 'ctrl',
     bindToController: true,
-    templateUrl: 'client/src/templates/event.html'
+    templateUrl: 'client/src/templates/eventList.html'
   }
 
 });
