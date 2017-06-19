@@ -1,3 +1,5 @@
+-- DROP DATABASE nibblr;
+
 CREATE DATABASE nibblr;
 
 USE nibblr;
@@ -21,5 +23,7 @@ CREATE TABLE events (
   location int NOT NULL,
   description varchar(200),
   creatorID int NOT NULL,
+  address varchar(200),
+  category varchar(20),
   FOREIGN KEY (creatorID) REFERENCES users(id)
 );
