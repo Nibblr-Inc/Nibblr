@@ -5,8 +5,12 @@ angular.module('nibblr')
     scope: {
       event: '<'
     },
-    controller: function() {
-    },
+    controller: function($scope) {
+      $scope.showDescription = false;
+      $scope.toggleDescription = function() {
+      $scope.showDescription = !$scope.showDescription;
+    }
+  },
     controllerAs: 'ctrl',
     bindToController: true,
     templateUrl: 'client/src/templates/eventListEntry.html'

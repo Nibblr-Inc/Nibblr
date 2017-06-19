@@ -1,9 +1,14 @@
-<li class="event">
+<li class="event" ng-click="toggleDescription()">
   <div class="event-name">
-    <p>EVENT!</p>
-    <p>{{ctrl.event.eventName}}</p>
+    <h3>{{ctrl.event.eventName}}</h3>
   </div>
   <div class="event-time">
     <p>{{ctrl.event.datetime}}</p>
+  </div>
+  <div class="event-description">
+    <span ng-if="showDescription">{{ctrl.event.description}}</span>
+  </div>
+  <div class="event-rsvps">
+    <span ng-if="showDescription"> RSVP List: {{ctrl.event.rsvps}}</span>
   </div>
 </li>
