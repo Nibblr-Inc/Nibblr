@@ -8,8 +8,7 @@ var router = express.Router();
 
 router.route('/searchRestaurants')
   .get(function(req, res) {
-    // nearbySearch & placeDetails here
-    requests.nearbySearch({query: {keyword: 'indian'}});
+    requests.nearbySearch(req, res);
   })
 
 // DB Queries

@@ -13,7 +13,7 @@ angular.module('nibblr')
 
   this.search = function(query, callback) {
     $http({
-    url: makeQueryString('localhost:3000/searchRestaurants?', {
+    url: makeQueryString('http://localhost:3000/searchRestaurants?', {
       keyword: query || 'pizza'
     }),
     method: 'GET',
@@ -27,5 +27,3 @@ angular.module('nibblr')
     });
   }
 });
-
-// angular.injector(['ng', 'nibblr']).get("searchRestaurants").search();

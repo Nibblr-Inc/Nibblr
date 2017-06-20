@@ -21,9 +21,10 @@ angular.module('nibblr', [])
 
 .controller('AppCtrl', ["searchRestaurants", function(searchRestaurants) {
   this.events = dummyData;
-  searchRestaurants.search('pizza', function(data) {
-    console.log('search data: ', data);
-  })
+  // search Restaurants search test passed
+  // searchRestaurants.search('pizza', function(data) {
+  //   console.log('search data: ', data);
+  // })
 }])
 
 .directive('app', function() {

@@ -27,3 +27,7 @@ CREATE TABLE events (
   category varchar(20),
   FOREIGN KEY (creatorID) REFERENCES users(id)
 );
+
+-- comment out drop database if you haven't created database yet
+-- mysql -u root -p < schema.sql
+-- or "mysql -u root -p" and then once in mysql shell "source schema.sql"
