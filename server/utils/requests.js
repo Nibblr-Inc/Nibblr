@@ -1,5 +1,6 @@
+var express = require('express');
 var https = require('https');
-var google_api_key = require('../config.js').google_api_key;
+var google_api_key = require('../../config.js').google_api_key;
 
 console.log('key: ', google_api_key);
 
