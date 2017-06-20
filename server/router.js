@@ -1,13 +1,15 @@
 var express = require('express');
-// var requests = require('./utils/requests.js')
+var session = require('express-session');
+var requests = require('./utils/requests.js');
 
 var router = express.Router();
 
 //API Requests
 
-router.route('/search')
+router.route('/searchRestaurants')
   .get(function(req, res) {
     // nearbySearch & placeDetails here
+    requests.nearbySearch({query: {keyword: 'indian'}});
   })
 
 // DB Queries
