@@ -24,7 +24,7 @@ exports.nearbySearch = function(req, res) {
       var places = JSON.parse(body);
       var locations = places.results;
 
-      console.log('locations: ', locations)
+      console.log('first location: ', locations[0])
       res.json(locations)
     });
   }).on('error', function(e) {
