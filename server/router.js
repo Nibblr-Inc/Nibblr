@@ -1,6 +1,7 @@
 var express = require('express');
 var session = require('express-session');
 var requests = require('./utils/requests.js');
+var controller = require('./controllers/index.js');
 
 var router = express.Router();
 
@@ -49,6 +50,11 @@ router.route('/login')
     res.send('login test')
   })
   .post(function(req, res) {
+    console.log('req in router: ', req.body)
+    controller.login.get(req, res, function(results) {
+      console.log('results: ', results);
+      // if results then update session with result info, else send back invalid password or username
+    });
     //compare hashed passwords
     //if they match, regenerate session
     //save userId on session

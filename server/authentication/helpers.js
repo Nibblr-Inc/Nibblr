@@ -2,7 +2,7 @@ var express = require('express');
 var Promise = require('bluebird');
 var bcryptHash = Promise.promisify(require('bcrypt-nodejs').hash);
 var bcryptCompare = Promise.promisify(require('bcrypt-nodejs').compare);
-var dbControllers = require('../../controllers/index.js')
+var dbControllers = require('../controllers/index.js')
 
 
 //require this file in router for authentication routes
@@ -18,7 +18,6 @@ exports.createHash = function(password) {
   })
 }
 
-exports.comparePasswords = function(password){
-  var hash = dbControllers.login.get;
+exports.comparePasswords = function(password, hash){
   return bcryptCompare(password, hash);
 }

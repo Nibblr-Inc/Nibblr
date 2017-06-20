@@ -1,5 +1,5 @@
 var models = require('../models');
-var auth = require('../server/authentication/helpers.js')
+var auth = require('../authentication/helpers.js')
 
 module.exports = {
 
@@ -13,7 +13,7 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var params = [req.body.name, req.body.event_time, req.body.location, req.body.description, req.body.creatorID, req.body.address, req.body.category];
+      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, req.body.creatorID, req.body.address, req.body.category];
       models.messages.post(params, function(err, results) {
         if (err) { /* do something */ }
         res.sendStatus(201);
@@ -70,11 +70,13 @@ module.exports = {
     }
   },
   login: {
-    get: function(req, res){
-      var params = [req.query.username];
-      models.login.getByUser(params, function(err, results) {
+    get: function(req, res, callback){
+      var params = [req.body.username];
+      models.login.get(params, function(err, results) {
         if (err) { /* do something */ }
-        res.json(results);
+        // bcryptCompare here if true send results in callback, if not callback(false)
+        callback(results);
+        // res.json(results);
       })
     }
   }
