@@ -1,4 +1,4 @@
--- DROP DATABASE nibblr;
+DROP DATABASE nibblr;
 
 CREATE DATABASE nibblr;
 
@@ -20,7 +20,7 @@ CREATE TABLE events (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name varchar(50) NOT NULL,
   event_time datetime NOT NULL,
-  location int NOT NULL,
+  location varchar(100) NOT NULL,
   description varchar(200),
   creatorID int NOT NULL,
   address varchar(200),
