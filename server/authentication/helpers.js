@@ -2,9 +2,9 @@ var express = require('express');
 var Promise = require('bluebird');
 var bcryptHash = Promise.promisify(require('bcrypt-nodejs').hash);
 var bcryptCompare = Promise.promisify(require('bcrypt-nodejs').compare);
-var dbModels = require('../../models/index.js')
 var dbControllers = require('../../controllers/index.js')
-// create password hashing function & compare function here
+
+
 //require this file in router for authentication routes
 
 exports.createHash = function(password) {
@@ -17,7 +17,8 @@ exports.createHash = function(password) {
     return hashedPass;
   })
 }
-//
-// exports.comparePasswords = function(password){
-//   var hash = dbControllers.users.get.
-// }
+
+exports.comparePasswords = function(password){
+  var hash = dbControllers.login.get;
+  return bcryptCompare(password, hash);
+}
