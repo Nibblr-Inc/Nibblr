@@ -28,4 +28,4 @@ angular.module('nibblr')
   }
 });
 
-angular.injector(['ng', 'nibblr']).get("searchRestaurants").search();
+// angular.injector(['ng', 'nibblr']).get("searchRestaurants").search();
