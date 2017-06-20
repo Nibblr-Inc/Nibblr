@@ -1,5 +1,4 @@
 .demo-card-wide.mdl-card {
-  width: 512px;
   float: left;
   margin: 1rem;
   position: relative;
@@ -14,4 +13,7 @@
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
+}
+.event-grid {
+  max-width: 960px;
 }

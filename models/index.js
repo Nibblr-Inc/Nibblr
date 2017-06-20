@@ -105,6 +105,7 @@ module.exports = {
 //   console.log('users test post results: ', results)
 // })
 
+
 // module.exports.users.post(['nate', 'abc'], function(err, results) {
 //   console.log('users test post err: ', err)
 //   console.log('users test post results: ', results)
@@ -114,7 +115,7 @@ module.exports = {
 //   console.log('users test post err: ', err)
 //   console.log('users test post results: ', results)
 // })
-
+//
 //
 // // name, event_time, location, description, creatorID, address, category
 // module.exports.events.post(['first event', '2017-07-04 12:30:00', 'Home Slice', 'This is the first event', 1, '800 Brazos St', 'pizza'], function(err, results) {
