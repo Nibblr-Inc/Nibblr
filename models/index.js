@@ -85,6 +85,9 @@ module.exports = {
         callback(err, results);
       })
     }
+  },
+  login: {
+    get: function()
   }
 };
 

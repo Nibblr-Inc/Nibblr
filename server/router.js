@@ -52,6 +52,7 @@ router.route('/login')
   .post(function(req, res) {
     //compare hashed passwords
     //if they match, regenerate session
+    //save userId on session
     //redirect to home page
     //if hashed passwords don't match, display error message asking user to try again
   })

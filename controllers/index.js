@@ -1,4 +1,5 @@
 var models = require('../models');
+var auth = require('../server/authentication/helpers.js')
 
 module.exports = {
 
@@ -30,7 +31,8 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var params = [req.body.username, req.body.password];
+      var hashedPass = auth.createHash(req.body.password)
+      var params = [req.body.username, hashedPass];
       models.users.post(params, function(err, results) {
         if (err) { /* do something */ }
         res.sendStatus(201);
@@ -39,14 +41,14 @@ module.exports = {
   },
   rsvp: {
     getByUser: function(req, res) {
-      var params = req.query.id;
+      var params = [req.query.id];
       models.rsvp.getByUser(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
       })
     },
     getByEvent: function(req, res) {
-      var params = req.query.id;
+      var params = [req.query.id];
       models.rsvp.getByEvent(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
