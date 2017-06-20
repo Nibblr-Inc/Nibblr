@@ -5,7 +5,7 @@
   location: 1, // api location id
   creator: 1,
   description: 'this is a description',
-  rsvps: [{username: 'bob'}, {username: 'bill'}]
+  rsvps: ['bob', 'bill']
 },
 {
  eventID: 2,
@@ -14,7 +14,7 @@
  location: 1, // api location id
  creator: 1,
  description: 'this is another description',
- rsvps: [{username: 'jill'}, {username: 'jill'}]
+ rsvps: ['jill', 'jane']
 }]
 
 module.exports = dummyData;

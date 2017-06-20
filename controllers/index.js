@@ -4,7 +4,9 @@ module.exports = {
 
   events: {
     get: function (req, res) {
-      models.messages.get(function(err, results) {
+      // create a params variable for if event id is specified
+      var params = [];
+      models.messages.get(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
       });
@@ -20,7 +22,9 @@ module.exports = {
 
   users: {
     get: function (req, res) {
-      models.users.get(function(err, results) {
+      // make an array length 1 with user_id in it if specified for params
+      var params = [];
+      models.users.get(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
       });
@@ -34,9 +38,30 @@ module.exports = {
     }
   },
   rsvp: {
+    getByUser: function(req, res) {
+      var params = req.query.id;
+      models.rsvp.getByUser(params, function(err, results) {
+        if (err) { /* do something */ }
+        res.json(results);
+      })
+    },
+    getByEvent: function(req, res) {
+      var params = req.query.id;
+      models.rsvp.getByEvent(params, function(err, results) {
+        if (err) { /* do something */ }
+        res.json(results);
+      })
+    },
     post: function(req, res) {
       var params = [req.body.user_id, req.body.event_id];
       models.rsvp.post(params, function(err, results) {
+        if (err) { /* do something */ }
+        res.sendStatus(201);
+      })
+    },
+    delete: function(params, callback) {
+      var params = [req.query.event_id, req.query.user_id];
+      models.rsvp.delete(params, function(err, results) {
         if (err) { /* do something */ }
         res.sendStatus(201);
       })
