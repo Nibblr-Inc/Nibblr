@@ -5,13 +5,13 @@ module.exports = {
   events: {
     get: function (params, callback) {
       // get all events
-      var queryStr = 'select e.*, e.username creator, group_concat(u.id) rsvps \
+      var queryStr = 'select e.*, e.username creator, group_concat(u.id) rsvp_user_id, group_concat(u.username) rsvp_usernames \
                       from (select e.*, u.username from events e \
                       inner join users u on e.creatorID = u.id) e \
                       inner join rsvp r on e.id = r.event_id \
                       inner join users u \
                       on r.user_id = u.id \
-                      group by e.id, e.name, e.event_time, e.location, e.description, e.creatorID, e.address, e.category, e.username';
+                      group by e.id, e.name, e.event_time, e.location, e.google_place_id, e.description, e.creatorID, e.address, e.category, e.username';
 
       // if given a specific event_id, example: params = [1]
       if (params.length) {
@@ -27,8 +27,8 @@ module.exports = {
     },
     post: function (params, callback) {
       // create a new event
-      var queryStr = 'insert into events (name, event_time, location, description, creatorID, address, category) \
-                      value (?, ?, ?, ?, ?, ?, ?)';
+      var queryStr = 'insert into events (name, event_time, location, google_place_id, description, creatorID, address, category) \
+                      value (?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
       });
@@ -88,7 +88,7 @@ module.exports = {
   },
   login: {
     get: function (params, callback) {
-      var queryStr = 'select password from users where username = ?';
+      var queryStr = 'select * from users where username = ?';
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
       })
@@ -100,10 +100,10 @@ module.exports = {
 
 // tests:
 
-module.exports.users.post(['mike', 'abc'], function(err, results) {
-  console.log('users test post err: ', err)
-  console.log('users test post results: ', results)
-})
+// module.exports.users.post(['mike', 'abc'], function(err, results) {
+//   console.log('users test post err: ', err)
+//   console.log('users test post results: ', results)
+// })
 
 // module.exports.users.post(['nate', 'abc'], function(err, results) {
 //   console.log('users test post err: ', err)

@@ -1,10 +1,12 @@
 var express = require('express')
 var path = require('path')
 var morgan = require('morgan')
+var bodyParser = require('body-parser');
 var router = require('./router')
 
 var app = express()
 
+app.use(bodyParser());
 app.use(morgan('dev'));
 
 // app.use(express.static(__dirname));
@@ -16,6 +18,7 @@ app.use(function(req, res, next) {
 })
 
 app.use('/', express.static(path.join(__dirname, '../')))
+
 
 
 app.get('/', function (req, res) {
