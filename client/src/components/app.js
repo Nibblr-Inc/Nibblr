@@ -19,12 +19,17 @@ rsvps: [{username: 'jill'}, {username: 'jill'}]
 
 angular.module('nibblr', [])
 
+.controller('AppCtrl', ["searchRestaurants", function(searchRestaurants) {
+  this.events = dummyData;
+  searchRestaurants.search('pizza', function(data) {
+    console.log('search data: ', data);
+  })
+}])
+
 .directive('app', function() {
   return {
     scope: {},
-    controller: function() {
-      this.events = dummyData;
-    },
+    controller: 'AppCtrl',
     controllerAs: 'ctrl',
     bindToController: true,
     templateUrl: 'client/src/templates/app.html'
