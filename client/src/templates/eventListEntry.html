@@ -13,9 +13,7 @@
   </div>
 </li> -->
 
-<!-- Wide card with share menu button -->
-
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+<div class="demo-card-wide mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text">{{ctrl.event.eventName}}</h2>
   </div>
@@ -23,9 +21,12 @@
     {{ctrl.event.description}}
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="toggleDescription()" ng-if="!showDescription">
       Get Started
     </a>
+    <div>
+      <eventView ng-if="showDescription"/>
+    </div>
   </div>
   <div class="mdl-card__menu">
     <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
