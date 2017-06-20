@@ -87,7 +87,12 @@ module.exports = {
     }
   },
   login: {
-    get: function()
+    get: function (params, callback) {
+      var queryStr = 'select password from users where username = ?';
+      db.query(queryStr, params, function(err, results) {
+        callback(err, results);
+      })
+    }
   }
 };
 
@@ -95,11 +100,11 @@ module.exports = {
 
 // tests:
 
-// module.exports.users.post(['mike', 'abc'], function(err, results) {
-//   console.log('users test post err: ', err)
-//   console.log('users test post results: ', results)
-// })
-//
+module.exports.users.post(['mike', 'abc'], function(err, results) {
+  console.log('users test post err: ', err)
+  console.log('users test post results: ', results)
+})
+
 // module.exports.users.post(['nate', 'abc'], function(err, results) {
 //   console.log('users test post err: ', err)
 //   console.log('users test post results: ', results)
@@ -109,7 +114,7 @@ module.exports = {
 //   console.log('users test post err: ', err)
 //   console.log('users test post results: ', results)
 // })
-//
+
 //
 // // name, event_time, location, description, creatorID, address, category
 // module.exports.events.post(['first event', '2017-07-04 12:30:00', 'Home Slice', 'This is the first event', 1, '800 Brazos St', 'pizza'], function(err, results) {

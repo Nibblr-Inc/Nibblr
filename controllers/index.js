@@ -68,5 +68,14 @@ module.exports = {
         res.sendStatus(201);
       })
     }
+  },
+  login: {
+    get: function(req, res){
+      var params = [req.query.username];
+      models.login.getByUser(params, function(err, results) {
+        if (err) { /* do something */ }
+        res.json(results);
+      })
+    }
   }
 };
