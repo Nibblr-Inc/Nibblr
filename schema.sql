@@ -7,7 +7,7 @@ USE nibblr;
 CREATE TABLE users (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   username varchar(20) NOT NULL UNIQUE,
-  password varchar(20) NOT NULL
+  password varchar(100) NOT NULL
 );
 
 CREATE TABLE rsvp (
