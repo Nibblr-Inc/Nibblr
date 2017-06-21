@@ -10,7 +10,7 @@ router.use('/create', function(req, res, next){
   if(req.session.loggedIn) {
     next();
   } else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 });
 
@@ -19,7 +19,7 @@ router.use('/rsvp', function(req, res, next){
     next();
   } else {
     console.log('redirect from rsvp')
-    res.redirect('/login');
+    res.redirect('/');
   }
 });
 
@@ -42,10 +42,6 @@ router.route('/list')
   });
 
 router.route('/create')
-  .get(function(req, res) {
-    // fetch event list once new event has been added
-    controller.events.get(req, res);
-  })
   .post(function(req, res) {
     // add event to database
     controller.events.post(req, res);
@@ -62,7 +58,7 @@ router.route('/create')
       controller.rsvp.delete(req, res);
     })
 
-// Authentication - add routes here
+// Authentication
 
 router.route('/signup')
   .get(function(req, res) {
@@ -107,7 +103,7 @@ router.route('/login')
 router.route('/logout')
   .get(function(req, res) {
     req.session.destroy();
-    console.log('logged out', req.session) //should be undefined
+    console.log('logged out', req.session) //session should be undefined
     res.redirect('/');
   })
 

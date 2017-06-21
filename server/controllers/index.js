@@ -25,7 +25,7 @@ module.exports = {
   users: {
     get: function (req, res) {
       // make an array length 1 with user_id in it if specified for params
-      var params = [];
+      var params = [req.body.username];
       models.users.get(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
