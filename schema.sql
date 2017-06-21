@@ -26,6 +26,7 @@ CREATE TABLE events (
   creatorID int NOT NULL,
   address varchar(200),
   category varchar(20),
+  CONSTRAINT unq_events UNIQUE (name, event_time, google_place_id),
   FOREIGN KEY (creatorID) REFERENCES users(id)
 );
 
