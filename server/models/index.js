@@ -40,7 +40,7 @@ module.exports = {
       // fetch all users
       var queryStr = 'select * from users';
       if (params.length) {
-        queryStr = queryStr.concat(' where id = ?');
+        queryStr = queryStr.concat(' where username = ?');
         db.query(queryStr, params, function(err, results) {
           callback(err, results);
         })
