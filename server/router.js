@@ -33,13 +33,11 @@ router.route('/searchRestaurants')
 
 // DB Queries
 
+
 router.route('/list')
+  //gets all event details
   .get(function(req, res) {
-    console.log('got it')
-    // fetch data for all events
-    console.log('in router for events get')
     // insert helper function(s) for event details get requests
-    // res.send('list test')
     controller.events.get(req, res);
   });
 
