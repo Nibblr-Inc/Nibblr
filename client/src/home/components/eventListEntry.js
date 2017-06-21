@@ -1,6 +1,6 @@
 angular.module('nibblr')
 
-.directive('event', function() {
+.directive('eventListEntry', function() {
   return {
     scope: {
       event: '<'

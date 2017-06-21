@@ -9,13 +9,16 @@
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 176px;
-  background: url('Cool-Lion.jpg') center / cover;
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
 }
+.mdl-card__media {
+    margin: 0;
+}
 .event-grid {
   max-width: 960px;
+  background-color: #eee;
 }
 
 a {
