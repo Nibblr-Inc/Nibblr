@@ -4,6 +4,7 @@ var morgan = require('morgan')
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var router = require('./router')
+require('./db/seed_db.js');  // this will populate db with seed data
 
 var app = express()
 

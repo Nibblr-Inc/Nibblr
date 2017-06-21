@@ -15,8 +15,9 @@ module.exports = {
     post: function (req, res) {
       var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, req.body.creatorID, req.body.address, req.body.category];
       models.events.post(params, function(err, results) {
-        if (err) { /* do something */ }
-        res.sendStatus(201);
+        console.log('in event post')
+        if (err) { console.log('err: ', err) }
+        else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
       });
     }
   },
@@ -35,7 +36,7 @@ module.exports = {
         var params = [req.body.username, hashedPass];
         models.users.post(params, function(err, results) {
           if (err) { /* do something */ }
-          res.sendStatus(201);
+          else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
         });
       });
     }
@@ -59,7 +60,7 @@ module.exports = {
       var params = [req.body.user_id, req.body.event_id];
       models.rsvp.post(params, function(err, results) {
         if (err) { /* do something */ }
-        res.sendStatus(201);
+        else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
       })
     },
     delete: function(params, callback) {

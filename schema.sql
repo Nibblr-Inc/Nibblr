@@ -10,11 +10,6 @@ CREATE TABLE users (
   password varchar(100) NOT NULL
 );
 
-CREATE TABLE rsvp (
-  user_id int NOT NULL,
-  event_id int NOT NULL,
-  PRIMARY KEY (user_id, event_id)
-);
 
 CREATE TABLE events (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -26,10 +21,17 @@ CREATE TABLE events (
   creatorID int NOT NULL,
   address varchar(200),
   category varchar(20),
-  CONSTRAINT unq_events UNIQUE (name, event_time, google_place_id),
-  FOREIGN KEY (creatorID) REFERENCES users(id)
+  FOREIGN KEY (creatorID) REFERENCES users(id),
+  CONSTRAINT uniq_events UNIQUE (name, event_time, google_place_id)
 );
 
+CREATE TABLE rsvp (
+  user_id int NOT NULL,
+  event_id int NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users (id),
+  FOREIGN KEY (event_id) REFERENCES events (id),
+  PRIMARY KEY (user_id, event_id)
+);
 -- comment out drop database if you haven't created database yet
 -- mysql -u root -p < schema.sql
 -- or "mysql -u root -p" and then once in mysql shell "source schema.sql"
