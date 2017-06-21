@@ -31,11 +31,12 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var hashedPass = auth.createHash(req.body.password)
-      var params = [req.body.username, hashedPass];
-      models.users.post(params, function(err, results) {
-        if (err) { /* do something */ }
-        res.sendStatus(201);
+      auth.createHash(req.body.password).then((hashedPass) => {
+        var params = [req.body.username, hashedPass];
+        models.users.post(params, function(err, results) {
+          if (err) { /* do something */ }
+          res.sendStatus(201);
+        });
       });
     }
   },
@@ -72,12 +73,25 @@ module.exports = {
   login: {
     get: function(req, res, callback){
       var params = [req.body.username];
-      models.login.get(params, function(err, results) {
-        if (err) { /* do something */ }
-        // bcryptCompare here if true send results in callback, if not callback(false)
-        callback(results);
-        // res.json(results);
+      models.login.get(params, function(err, result) {
+        if (err || result.length !== 1) { /* do something */ }
+        var hash = result[0].password;
+        auth.comparePasswords(req.body.password, hash).then((bool) => {
+          if (!bool) {
+            callback(false)
+            res.sendStatus(400);
+          } else {
+            callback(result);
+            res.sendStatus(201);
+          }
+        });
       })
     }
   }
 };
+
+// module.exports.users.post({body: {username: 'mike', password: 'abc'}})
+// module.exports.users.post({body: {username: 'nate', password: 'abc'}})
+// module.exports.users.post({body: {username: 'molly', password: 'abc'}})
+
+// module.exports.login.get({body: {username: 'molly', password: 'abc'}})
