@@ -1,11 +1,11 @@
 angular.module('nibblr')
 
-.service('events', function($http){
+.service('eventsRequests', function($http){
   // TODO
 
   this.getEvents = function(callback) {
     $http({
-    url: 'http://localhost:3000/?',
+    url: 'http://localhost:3000/list?',
     method: 'GET',
     dataType: 'json',
     }).then(function successCallback(response) {

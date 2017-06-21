@@ -83,8 +83,11 @@ rsvps: ['jill', 'jane']
 
 angular.module('nibblr', [])
 
-.controller('AppCtrl', ["searchRestaurants", function(searchRestaurants) {
+.controller('AppCtrl', ["searchRestaurants", "eventsRequests", function(searchRestaurants, eventsRequests) {
   this.events = dummyData;
+  eventsRequests.getEvents(function(data) {
+    console.log('event data: ', data)
+  })
   // search Restaurants search test passed
   // searchRestaurants.search('pizza', function(data) {
   //   console.log('search data: ', data);

@@ -16,8 +16,10 @@ router.route('/searchRestaurants')
 
 router.route('/list')
   .get(function(req, res) {
+    console.log('in router for events get')
     // insert helper function(s) for event details get requests
-    res.send('list test')
+    // res.send('list test')
+    controller.events.get(req, res);
   });
 
 router.route('/create')
