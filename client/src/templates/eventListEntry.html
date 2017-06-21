@@ -15,7 +15,7 @@
 
 <div class="demo-card-wide mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
   <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">{{ctrl.event.eventName}}</h2>
+    <h2 class="mdl-card__title-text">{{ctrl.event.name}}</h2>
   </div>
   <div class="mdl-card__supporting-text">
     {{ctrl.event.description}}
@@ -30,7 +30,7 @@
   </div>
   <div class="mdl-card__menu">
     <!-- Number badge on icon -->
-    <div class="material-icons mdl-badge mdl-badge--overlap" data-badge={{ctrl.event.rsvps.length}}>account_box</div>
+    <div class="material-icons mdl-badge mdl-badge--overlap" data-badge={{ctrl.event.rsvp_user_id.length}}>account_box</div>
 
   </div>
 </div>

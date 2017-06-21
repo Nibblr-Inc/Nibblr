@@ -6,6 +6,7 @@ angular.module('nibblr')
       event: '<'
     },
     controller: function() {},
+    restrict: 'E',
     templateUrl: 'client/src/templates/eventView.html'
   }
 })
