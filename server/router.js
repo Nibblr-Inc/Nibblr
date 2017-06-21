@@ -52,6 +52,7 @@ router.route('/login')
   .post(function(req, res) {
     controller.login.get(req, res, function(userData) {
       if (userData) {/* regenerate user session with userData */}
+      else {/*  */}
     });
     //compare hashed passwords
     //if they match, regenerate session
