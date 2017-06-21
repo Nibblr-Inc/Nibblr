@@ -7,14 +7,14 @@ module.exports = {
     get: function (req, res) {
       // create a params variable for if event id is specified
       var params = [];
-      models.messages.get(params, function(err, results) {
+      models.events.get(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
       });
     },
     post: function (req, res) {
       var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, req.body.creatorID, req.body.address, req.body.category];
-      models.messages.post(params, function(err, results) {
+      models.events.post(params, function(err, results) {
         if (err) { /* do something */ }
         res.sendStatus(201);
       });
@@ -95,3 +95,5 @@ module.exports = {
 // module.exports.users.post({body: {username: 'molly', password: 'abc'}})
 
 // module.exports.login.get({body: {username: 'molly', password: 'abc'}})
+// body = obj{} w/ keys: name, event_time, location, google_place_id, description, creatorID, address, category
+// module.exports.events.post({body: {name: 'first event', event_time: '2017-07-04 12:30:00', location: 'Home Slice', google_place_id: 'madeupid', description: 'this is a test', creatorID: 1, address: '304 W Mary St', category: 'pizza'}})

@@ -5,11 +5,11 @@ module.exports = {
   events: {
     get: function (params, callback) {
       // get all events
-      var queryStr = 'select e.*, e.username creator, group_concat(u.id) rsvp_user_id, group_concat(u.username) rsvp_usernames \
+      var queryStr = 'select e.*, group_concat(u.id) rsvp_user_id, group_concat(u.username) rsvp_usernames \
                       from (select e.*, u.username from events e \
                       inner join users u on e.creatorID = u.id) e \
-                      inner join rsvp r on e.id = r.event_id \
-                      inner join users u \
+                      left outer join rsvp r on e.id = r.event_id \
+                      left outer join users u \
                       on r.user_id = u.id \
                       group by e.id, e.name, e.event_time, e.location, e.google_place_id, e.description, e.creatorID, e.address, e.category, e.username';
 
@@ -17,11 +17,12 @@ module.exports = {
       if (params.length) {
         queryStr = queryStr.concat(' where e.id = ?');
         db.query(queryStr, params, function(err, data) {
-          callback(err, results);
+          callback(err, data);
         });
       } else {
         db.query(queryStr, function(err, data) {
-          callback(err, results);
+          console.log('data in model: ', data);
+          callback(err, data);
         });
       }
     },
