@@ -6,6 +6,7 @@ angular.module('nibblr')
       events: '<'
     },
     controller: function() {
+      console.log('eventList events', this)
     },
     controllerAs: 'ctrl',
     bindToController: true,
