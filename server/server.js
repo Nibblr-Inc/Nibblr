@@ -2,6 +2,7 @@ var express = require('express')
 var path = require('path')
 var morgan = require('morgan')
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var router = require('./router')
 
 var app = express()
@@ -24,6 +25,15 @@ app.use('/', express.static(path.join(__dirname, '../')))
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 })
+
+//Create session
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: null }
+}));
 
 app.use('/', router);
 
