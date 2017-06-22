@@ -35,9 +35,9 @@ angular.module('nibblr')
     }).then(function successCallback(response) {
       if (callback) {
         callback(response)
-      }, function errorCallback(response) {
-        console.log('=( error')
       }
+    }, function errorCallback(response) {
+        console.log('=( error')
     })
   }
 });
