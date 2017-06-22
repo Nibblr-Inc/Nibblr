@@ -2,8 +2,18 @@ angular.module('nibblr')
 
 .directive('login', function() {
   return {
-    scope: {},
-    controller: function() {
+    scope: {
+      service: '<'
+    },
+    controller: function($scope) {
+      $scope.hideLogin = false;
+      $scope.showLogout = false;
+      //toggle these two when a login is successful
+      this.handleClick = () => {
+        //figure out how to make login service work here
+      }
+
+
       var $ = angular.element;
       var overlay = $("#overlay"),
               fab = $(".fab"),
@@ -31,7 +41,6 @@ angular.module('nibblr')
         fab.removeClass('active');
         fab.removeClass('icon');
         overlay.removeClass('dark-overlay');
-
       }
     },
     templateUrl: 'client/src/home/templates/login.html'

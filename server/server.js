@@ -4,6 +4,10 @@ var morgan = require('morgan')
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var router = require('./router')
+<<<<<<< fa6836ebffe93ec7851e7b33431d549decab84f5
+=======
+// require('./db/seed_db.js');  // this will populate db with seed data
+>>>>>>> Attempt to implement login service, still needs more work
 
 var app = express()
 
