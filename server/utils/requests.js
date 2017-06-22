@@ -25,12 +25,38 @@ exports.nearbySearch = function(req, res) {
       var locations = places.results;
 
       console.log('first location: ', locations[0])
+      console.log('all locations: ', locations)
       res.json(locations)
     });
   }).on('error', function(e) {
     console.log("Got error: " + e.message);
   });
 };
+
+
+exports.placePhotos = function(req, res) {
+  var key = google_api_key;
+  var height = req.query.height || 400;
+  var width = req.query.width || 400;
+  var photo_reference = req.query.photo_reference;
+
+  var url = "https://maps.googleapis.com/maps/api/place/photo?" + "maxheight=" + height + "&maxwidth=" + width + "&photoreference=" + photo_reference + "&key=" + key;
+    console.log('url: ', url);
+  https.get(url, function(response) {
+    var body ='';
+    response.on('data', function(chunk) {
+      body += chunk;
+    });
+
+    response.on('end', function() {
+      var image = (body);
+      console.log('body: ', body)
+      res.send(body)
+    });
+  }).on('error', function(e) {
+    console.log("Got error: " + e.message);
+  });
+}
 
 
 exports.placeDetails = function(req, res) {

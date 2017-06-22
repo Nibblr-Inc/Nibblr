@@ -31,6 +31,13 @@ router.route('/searchRestaurants')
     requests.nearbySearch(req, res);
   })
 
+router.route('/getImage')
+  .get(function(req, res) {
+    //make API call
+    requests.placePhotos(req, res);
+  })
+
+
 // DB Queries
 
 

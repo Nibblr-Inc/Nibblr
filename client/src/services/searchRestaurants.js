@@ -11,10 +11,10 @@ angular.module('nibblr')
     return url + paramsArray.join('&');
   }
 
-  this.search = function(query, callback) {
+  this.search = function(keyword, callback) {
     $http({
     url: makeQueryString('http://localhost:3000/searchRestaurants?', {
-      keyword: query || 'pizza'
+      keyword: keyword || 'pizza'
     }),
     method: 'GET',
     dataType: 'json',
@@ -25,5 +25,19 @@ angular.module('nibblr')
     }, function errorCallback(response) {
       console.log('=( error')
     });
+  }
+
+  this.getImage = function(query, callback) {
+    // query is obj with height, width, and photo_reference keys.  Height and width are optional.
+    $http({
+      url: makeQueryString('http://localhost:3000/getImage?', query),
+      method: 'GET',
+    }).then(function successCallback(response) {
+      if (callback) {
+        callback(response)
+      }, function errorCallback(response) {
+        console.log('=( error')
+      }
+    })
   }
 });
