@@ -29,7 +29,7 @@ angular.module('nibblr')
         }
 
         fab.removeClass('active');
-        // fab.removeClass('mdl-navigation__link');
+        fab.removeClass('icon');
         overlay.removeClass('dark-overlay');
 
       }
