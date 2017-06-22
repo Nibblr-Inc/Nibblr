@@ -73,14 +73,25 @@ router.route('/signup')
     res.send('signup test - get')
   })
   .post(function(req, res) {
-    var exists = controller.users.get(req, res);
-    if (!exists) {
-      controller.users.post(req, res);
-      req.session.loggedIn = true;
-      res.redirect('/list');
-    } else {
-      res.send('username not available, please choose another');
-    }
+    controller.users.post(req, res, function(err, signup) {
+      if (!err) {
+        controller.users.get(req, res, function(err, userData) {
+          if (err) {
+            res.sendStatus(404);
+          } else {
+            req.session.regenerate(function() {
+              req.session.user_id = userData[0].id;
+              req.session.user = userData[0].username;
+              req.session.loggedIn = true;
+              console.log('signup success')
+              res.redirect('/list');
+            });
+          }
+        })
+      } else {
+        res.sendStatus(404);
+      }
+    })
   })
 
 router.route('/login')
@@ -94,8 +105,8 @@ router.route('/login')
       if (userData) {
         console.log('userData', userData)
         req.session.regenerate(function() {
-          req.session.user_id = id;
-          req.session.user = username;
+          req.session.user_id = userData[0].id;
+          req.session.user = userData[0].username;
           req.session.loggedIn = true;
           console.log('login success')
           res.redirect('/list');
