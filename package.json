@@ -12,6 +12,7 @@
     "start": "mysql -u root < schema.sql | node server/db/seed_db.js | nodemon server/server.js"
   },
   "dependencies": {
+    "jquery": "^3.2.1",
     "angular": "^1.6.4",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
