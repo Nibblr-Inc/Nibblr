@@ -27,16 +27,20 @@ module.exports = {
       // make an array length 1 with user_id in it if specified for params
       var params = [req.body.username];
       models.users.get(params, function(err, results) {
-        if (err) { /* do something */ }
-        res.json(results);
+        if (callback) {
+          callback(err, results);
+        }
       });
     },
-    post: function (req, res) {
+    post: function (req, res, callback) {
       auth.createHash(req.body.password).then((hashedPass) => {
         var params = [req.body.username, hashedPass];
         models.users.post(params, function(err, results) {
-          if (err) { /* do something */ }
-          else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
+          if (err) {
+            res.send('username not available, please choose another');
+          } else if (callback) {
+            callback(null, results);
+          }
         });
       });
     }
