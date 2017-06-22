@@ -10,7 +10,7 @@ router.use('/create', function(req, res, next){
   if(req.session.loggedIn) {
     next();
   } else {
-    res.redirect('/');
+    res.redirect('/list');
   }
 });
 
@@ -19,7 +19,7 @@ router.use('/rsvp', function(req, res, next){
     next();
   } else {
     console.log('redirect from rsvp')
-    res.redirect('/');
+    res.redirect('/list');
   }
 });
 
@@ -70,7 +70,7 @@ router.route('/signup')
     if (!exists) {
       controller.users.post(req, res);
       req.session.loggedIn = true;
-      res.redirect('/');
+      res.redirect('/list');
     } else {
       res.send('username not available, please choose another');
     }
@@ -91,7 +91,7 @@ router.route('/login')
           req.session.user = username;
           req.session.loggedIn = true;
           console.log('login success')
-          res.redirect('/');
+          res.redirect('/list');
         });
       } else {
         console.log('no userData')
@@ -104,7 +104,7 @@ router.route('/logout')
   .get(function(req, res) {
     req.session.destroy();
     console.log('logged out', req.session) //session should be undefined
-    res.redirect('/');
+    res.redirect('/list');
   })
 
 

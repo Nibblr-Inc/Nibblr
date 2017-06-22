@@ -9,7 +9,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "mysql -u root < schema.sql | node server/db/seed_db.js | nodemon server/server.js"
   },
   "dependencies": {
     "angular": "^1.6.4",
