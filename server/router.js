@@ -6,7 +6,7 @@ var controller = require('./controllers/index.js');
 var router = express.Router();
 
 //Middleware function to check login status
-router.use('/create', function(req, res, next){
+router.use('/submit', function(req, res, next){
   if(req.session.loggedIn) {
     next();
   } else {
@@ -48,7 +48,8 @@ router.route('/list')
     controller.events.get(req, res);
   });
 
-router.route('/create')
+
+router.route('/submit')
   .post(function(req, res) {
     // add event to database
     controller.events.post(req, res);

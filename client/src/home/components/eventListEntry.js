@@ -13,7 +13,7 @@ angular.module('nibblr')
   },
     controllerAs: 'ctrl',
     bindToController: true,
-    templateUrl: 'client/src/templates/eventListEntry.html'
+    templateUrl: 'client/src/home/templates/eventListEntry.html'
   }
 
 });

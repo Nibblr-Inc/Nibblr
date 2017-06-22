@@ -9,16 +9,20 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "mysql -u root < schema.sql | node server/db/seed_db.js | nodemon server/server.js"
+    "start": "mysql -u root < schema.sql | node server/db/seed_db.js | nodemon server/server.js",
+    "dev": "webpack",
+    "dev-server": "webpack-dev-server --host 127.0.0.1 --port 3000 --inline --hot",
+    "prod": "export NODE_ENV=production && webpack",
+    "prod-windows": "set \"NODE_ENV=production\" && \"./node_modules/.bin/webpack\""
   },
   "dependencies": {
-    "jquery": "^3.2.1",
     "angular": "^1.6.4",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.15.0",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
+    "jquery": "^3.2.1",
     "morgan": "^1.8.2",
     "mysql": "^2.4.2",
     "node": "0.0.0",
@@ -28,6 +32,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "material-design-lite": "^1.1.3"
   }
 }

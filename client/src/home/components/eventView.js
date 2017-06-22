@@ -7,6 +7,6 @@ angular.module('nibblr')
     },
     controller: function() {},
     restrict: 'E',
-    templateUrl: 'client/src/templates/eventView.html'
+    templateUrl: 'client/src/home/templates/eventView.html'
   }
 })

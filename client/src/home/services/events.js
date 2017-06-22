@@ -19,7 +19,7 @@ angular.module('nibblr')
 
   this.postEvent = function(body, callback) {
     $http({
-    url: 'http://localhost:3000/create?',
+    url: 'http://localhost:3000/submit?',
     method: 'POST',
     dataType: 'json',
     // body = obj{} w/ keys: name, event_time, location, google_place_id, description, creatorID, address, category
@@ -31,5 +31,12 @@ angular.module('nibblr')
     }, function errorCallback(response) {
       console.log('=( error')
     });
+  }
+
+  this.redirectToCreate = function() {
+    $http({
+    url: 'http://localhost:3000/create?'
+    // body = obj{} w/ keys: name, event_time, location, google_place_id, description, creatorID, address, category
+  })
   }
 });
