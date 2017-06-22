@@ -17,16 +17,17 @@ var dummyData = [
 
 angular.module('nibblr', [])
 
-.controller('AppCtrl', ["searchRestaurants", "eventsRequests", function(searchRestaurants, eventsRequests) {
+.controller('AppCtrl', ["searchRestaurants", "eventsRequests", "login", function(searchRestaurants, eventsRequests, login) {
   this.events = dummyData;
   eventsRequests.getEvents(function(data) {
     console.log('event data: ', data.data)
     this.events = data.data;
   }.bind(this))
   // search Restaurants search test passed
-  searchRestaurants.search('pizza', function(data) {
-    console.log('search data: ', data);
-  })
+  // searchRestaurants.search('pizza', function(data) {
+  //   console.log('search data: ', data);
+  // })
+  this.login = login;
 }])
 
 .directive('app', function() {

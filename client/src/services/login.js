@@ -1,3 +1,5 @@
+angular.module('nibblr')
+
 .service('login', function($http){
   // TODO
 
