@@ -5,18 +5,13 @@ angular.module('createEvent')
     scope: {
     },
     controller: function() {
-      window.eventData.date = '';
-      window.eventData.time = '';
 
       this.handleDateChange = function(item) {
-        window.eventData.date = item;
+        console.log('item: ', item._d);
+        window.eventData.event_time = item._d;
       };
 
-      this.handleTimeChange = function(item) {
-        window.eventData.time = item;
-      };
-
-      this.handleSubmit = function() {
+      this.formatDate = function() {
         var newDate = new Date(`2017-${window.eventData.date}T${window.eventData.time}:00`);
         window.eventData.event_time = newDate.toISOString();
       }
