@@ -17,7 +17,7 @@ var dummyData = [
 
 angular.module('nibblr', [])
 
-.controller('AppCtrl', ["searchRestaurants", "eventsRequests", "login", function(searchRestaurants, eventsRequests, login) {
+.controller('AppCtrl', ["$scope", "searchRestaurants", "eventsRequests", "logout", function($scope, searchRestaurants, eventsRequests, logout) {
   this.events = dummyData;
   eventsRequests.getEvents(function(data) {
     console.log('event data: ', data.data)
@@ -27,14 +27,27 @@ angular.module('nibblr', [])
   // searchRestaurants.search('pizza', function(data) {
   //   console.log('search data: ', data);
   // })
+  $scope.showLogout = true;
 
-  // this.login = login;
-
+  this.logoutClick = () => {
+    console.log('in logout click')
+    // $scope.showLogout = false;
+    console.log($scope.showLogout);
+    logout.logout(function(data){
+      console.log('data', data);
+      if (data.data === 'logged out') {
+        console.log('Now logged out')
+      }
+    });
+  }
 }])
 
 .directive('app', function() {
   return {
-    scope: {},
+    scope: {
+      hideLogin: '<',
+      showLogout: '<'
+    },
     controller: 'AppCtrl',
     controllerAs: 'ctrl',
     bindToController: true,

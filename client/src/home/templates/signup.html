@@ -1,3 +1,32 @@
-<div class="login">
-  <h3>signup form goes here</h3>
+<div class="signup" >
+<div class="fab2">
+  <!-- <i class="material-icons">add</i> -->
+  <button class="icon2 mdl-button mdl-js-button">
+  Sign Up
+</button>
+
+  <form class='cntt-wrapper'>
+    <div id="fab-hdr4">
+      <h3>{{message2}}</h3>
+    </div>
+
+    <div class="cntt">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="post.username1" id="text5" placeholder="username"/>
+        <label class="mdl-textfield__label" for="text2"></label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" ng-model="post.password1" id="text6" placeholder="password"/>
+        <label class="mdl-textfield__label" for="text2"></label>
+      </div>
+    </div>
+
+    <div class="btn-wrapper">
+      <button class="mdl-button mdl-js-button" id="cancel4">Cancel</button>
+      <button class="mdl-button mdl-js-button mdl-button--primary" id="submit4" ng-click="ctrl.signupClick(post.username1, post.password1)">Submit</button>
+    </div>
+
+  </form>
+</div>
 </div>

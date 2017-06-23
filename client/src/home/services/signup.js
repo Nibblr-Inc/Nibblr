@@ -14,7 +14,7 @@ angular.module('nibblr')
         callback(response);
       }
     }, function errorCallback(response) {
-      console.log('=( error')
+      console.log('=( error with signup', response)
     });
   }
 

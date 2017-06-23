@@ -23,12 +23,14 @@ module.exports = {
   },
 
   users: {
-    get: function (req, res) {
+    get: function (req, res, callback) {
       // make an array length 1 with user_id in it if specified for params
       var params = [req.body.username];
       models.users.get(params, function(err, results) {
         if (callback) {
           callback(err, results);
+        } else {
+          res.sendStatus(201);
         }
       });
     },
