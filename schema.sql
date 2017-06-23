@@ -17,7 +17,7 @@ CREATE TABLE events (
   event_time datetime NOT NULL,
   location varchar(100) NOT NULL,
   google_place_id varchar(100),
-  description varchar(200),
+  description varchar(400),
   creatorID int NOT NULL,
   address varchar(200),
   category varchar(20),
