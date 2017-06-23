@@ -12,6 +12,9 @@
   <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
   <script src="client/assets/stepper.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+  <script src="client/assets/timePicker/angular-moment-picker.min.js"></script>
+  <link href="client/assets/timePicker/angular-moment-picker.min.css" rel="stylesheet">
   <style>
     body {
       background-color: rgba(0, 0, 0, .02);
@@ -27,6 +30,7 @@
   <!-- Always shows a header, even in smaller screens. -->
 
   <script src="client/src/createEvent/components/app.js"></script>
+  <script src="client/src/createEvent/components/dateTime.js"></script>
   <script src="client/src/createEvent/services/searchRestaurants.js"></script>
 
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -113,7 +117,7 @@
                     </span>
                   </span>
                   <div class="mdl-step__content">
-
+                    <date-time></date-time>
                   </div>
                   <div class="mdl-step__actions">
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
