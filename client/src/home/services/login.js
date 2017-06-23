@@ -4,9 +4,16 @@ angular.module('nibblr')
   // TODO
 
   this.login = function(body, callback) {
+    // var makeQueryString = function(url, params) {
+    //   var paramsArray = []
+    //   for (p in params) {
+    //     paramsArray.push(p + '=' + params[p]);
+    //   }
+    //   return url + paramsArray.join('&');
+    // }
     $http({
     // body should be obj with keys: username, password
-    url: makeQueryString('http://localhost:3000/login?', query),
+    url: 'http://localhost:3000/login?',
     method: 'POST',
     dataType: 'json',
     data: body,
@@ -15,7 +22,7 @@ angular.module('nibblr')
         callback(response);
       }
     }, function errorCallback(response) {
-      console.log('=( error')
+      console.log('=( error', body, response)
     });
   }
 });
