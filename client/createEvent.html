@@ -28,6 +28,9 @@
 
   <script src="client/src/createEvent/components/app.js"></script>
   <script src="client/src/createEvent/services/searchRestaurants.js"></script>
+  <script src="client/src/createEvent/components/nameDescription.js"></script>
+
+
 
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div id="overlay"></div>
@@ -96,7 +99,9 @@
                       <span class="mdl-step__title-text">Title of step 2</span>
                     </span>
                   </span>
-                  <div class="mdl-step__content"></div>
+                  <div class="mdl-step__content">
+                    <name-description />
+                  </div>
                   <div class="mdl-step__actions">
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored mdl-button--raised" data-stepper-next>
                       Continue
@@ -147,6 +152,7 @@
                 step = steps[i];
                 step.addEventListener('onstepnext', function (e) {
                   stepper.next();
+                  console.log('event data: ',window.eventData)
                 });
               }
               element.addEventListener('onsteppercomplete', function (e) {
@@ -163,6 +169,7 @@
             };
 
             window.addEventListener('load', demoNonLinear);
+            window.eventData = {};
           })();
         </script>
         <!--
