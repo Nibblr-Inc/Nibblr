@@ -1,1 +1,1 @@
-angular.module('createEvent', [])
+angular.module('createEvent', ['moment-picker'])

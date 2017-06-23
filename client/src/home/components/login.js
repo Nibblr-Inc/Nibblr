@@ -8,11 +8,12 @@ angular.module('nibblr')
       // $scope.hideLogin = false;
       // $scope.showLogout = false;
       //toggle these two when a login is successful
-      this.handleClick = () => {
+      this.handleClick = (username, password) => {
         //figure out how to make login service work here
         console.log('in handle click')
-        login.login({username: 'mike', password: 'abc'}, function(data){
-          console.log(data);
+        console.log(username, password)
+        login.login({username: username, password: password}, function(data){
+          console.log('data', data);
         });
       }
 
