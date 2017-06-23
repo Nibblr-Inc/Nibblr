@@ -1,7 +1,20 @@
 angular.module('nibblr')
 
-.controller('CreateCtrl', ['searchRestaurants', function(searchRestaurants) {
+.controller('CreateCtrl', ['eventsRequests', function(eventsRequests) {
+  var $ = angular.element;
+  var overlay = $("#overlay"),
+          fab2 = $(".fab2"),
+       cancel = $("#cancel"),
+       submit = $("#submit");
 
+  //fab click
+  fab2.on('click', openFAB);
+  overlay.on('click', closeFAB);
+  cancel.on('click', closeFAB);
+
+  function openFAB(event) {
+    eventsRequests.redirectToCreate();
+  }
 }])
 
 .directive('createEvent', function() {
@@ -11,6 +24,6 @@ angular.module('nibblr')
     controllerAs: 'ctrl',
     bindToController: true,
     restrict: 'E',
-    templateUrl: 'client/src/templates/createEvent.html'
+    templateUrl: 'client/src/home/templates/createEvent.html'
   }
 })

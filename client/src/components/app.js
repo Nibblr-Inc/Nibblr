@@ -27,7 +27,9 @@ angular.module('nibblr', [])
   // searchRestaurants.search('pizza', function(data) {
   //   console.log('search data: ', data);
   // })
+
   this.login = login;
+
 }])
 
 .directive('app', function() {
@@ -37,7 +39,7 @@ angular.module('nibblr', [])
     controllerAs: 'ctrl',
     bindToController: true,
     restrict: 'E',
-    templateUrl: 'client/src/templates/app.html'
+    templateUrl: 'client/src/home/templates/app.html'
   }
 
 })

@@ -43,7 +43,7 @@ angular.module('nibblr')
         overlay.removeClass('dark-overlay');
       }
     },
-    templateUrl: 'client/src/templates/login.html'
+    templateUrl: 'client/src/home/templates/login.html'
   }
 
 })
