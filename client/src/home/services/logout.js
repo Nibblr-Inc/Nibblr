@@ -1,6 +1,6 @@
 angular.module('nibblr')
 
-.service('logout', function($http){
+.service('logout', function($http, $window){
   // TODO
 
   this.logout = function(callback) {
@@ -9,7 +9,8 @@ angular.module('nibblr')
     method: 'GET',
     dataType: 'json',
     }).then(function successCallback(response) {
-      sessionStorage.clear();
+      sessionStorage.setItem('loggedIn', false);
+      $window.location.reload();
       if (callback) {
         callback(response);
       }

@@ -18,9 +18,15 @@
       </a>
 
       <!-- <a class="mdl-navigation__link" href="">Sign In</a> -->
-      <signup />
-      <login ng-if="!hideLogin"/>
-      <button class="icon mdl-button mdl-js-button" ng-if="showLogout" ng-click="ctrl.logoutClick()">Logout</button>
+      <div>
+        <signup />
+      </div>
+      <div ng-if="!hideLogin">
+        <login />
+      </div>
+      <div>
+        <button class="icon mdl-button mdl-js-button" ng-if="showLogout" ng-click="ctrl.logoutClick()">Logout</button>
+      </div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <!--

@@ -1,6 +1,6 @@
 angular.module('nibblr')
 
-.service('login', function($http){
+.service('login', function($http, $window){
   // TODO
 
   this.login = function(body, callback) {
@@ -13,12 +13,16 @@ angular.module('nibblr')
     data: body,
     }).then(function successCallback(response) {
       console.log('response from login', response);
-      sessionStorage.setItem('loggedIn', true);
       if (callback) {
+        if (response.data === 'Created') {
+          sessionStorage.setItem('loggedIn', true);
+          $window.location.reload();
+        }
         callback(response);
       }
     }, function errorCallback(response) {
       console.log('=( error', body, response)
+      $window.location.reload();
     });
   }
 });

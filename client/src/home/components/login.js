@@ -4,10 +4,8 @@ angular.module('nibblr')
   return {
     scope: {
     },
-    controller: function(login, $scope) {
+    controller: function(login, $scope, $window) {
       $scope.message = "Login";
-      $scope.hideLogin = false;
-      $scope.showLogout = false;
       // $scope.showLogout = false;
       //toggle these two when a login is successful
       this.handleClick = (username, password) => {
@@ -17,11 +15,6 @@ angular.module('nibblr')
         login.login({username: username, password: password}, function(data){
           console.log('data', data);
           if (data.status === 201) {
-            console.log('VICTORY')
-            $scope.hideLogin = true;
-            $scope.showLogout = true;
-            console.log('hideLogin', $scope.hideLogin)
-            console.log('showLogout', $scope.showLogout)
             $scope.message = "Success!"
           } else {
             $scope.message = "Try again"
@@ -39,6 +32,7 @@ angular.module('nibblr')
       fab.on('click', openFAB);
       overlay.on('click', closeFAB);
       cancel.on('click', closeFAB);
+      // submit.on('click', closeFAB);
 
       function openFAB(event) {
         if (event) event.preventDefault();

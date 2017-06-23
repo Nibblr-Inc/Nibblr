@@ -5,18 +5,17 @@ angular.module('nibblr')
     scope: {
     },
     controller: function(signUp, $scope) {
-      $scope.message2 = "Sign Up";
+      $scope.message2 = 'Sign Up';
       this.signupClick = (username1, password1) => {
         //figure out how to make login service work here
         console.log('in signup click')
         console.log(username1, password1)
         signUp.signUp({username: username1, password: password1}, function(data){
           console.log('data', data);
-          if (data.status === 201) {
-            console.log('Sign Up VICTORY')
-            $scope.message2 = "Success!"
+          if (data.data === 'signed up!') {
+            $scope.message2 = 'Success!'
           } else {
-            $scope.message2 = "Try again"
+            $scope.message2 = 'Try again'
           }
         });
       }
