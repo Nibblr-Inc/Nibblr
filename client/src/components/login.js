@@ -4,17 +4,14 @@ angular.module('nibblr')
   return {
     scope: {
     },
-    controller: function(login) {
-      // $scope.hideLogin = false;
-      // $scope.showLogout = false;
+    controller: function($scope) {
+      $scope.hideLogin = false;
+      $scope.showLogout = false;
       //toggle these two when a login is successful
       this.handleClick = () => {
         //figure out how to make login service work here
-        console.log('in handle click') 
-        login.login({username: 'mike', password: 'abc'}, function(data){
-          console.log(data);
-        });
       }
+
 
       var $ = angular.element;
       var overlay = $("#overlay"),
@@ -26,6 +23,7 @@ angular.module('nibblr')
       fab.on('click', openFAB);
       overlay.on('click', closeFAB);
       cancel.on('click', closeFAB);
+      submit.on('click', closeFAB);
 
       function openFAB(event) {
         if (event) event.preventDefault();
@@ -47,7 +45,7 @@ angular.module('nibblr')
     },
     controllerAs: 'ctrl',
     bindToController: true,
-    templateUrl: 'client/src/home/templates/login.html'
+    templateUrl: 'client/src/templates/login.html'
   }
 
 })
