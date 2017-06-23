@@ -79,6 +79,13 @@ a {
   width: 96px;
 }
 
+.icon2 {
+  color: #fff;
+  padding: 10px 20px 10px 20px;
+  height: 56px;
+  width: 96px;
+}
+
 .fab.active {
   cursor: default;
   background: #FFF;
@@ -96,8 +103,8 @@ a {
   background: #FFF;
   border-radius: .125em;
   position: fixed;
-  width: 500px;
-  height: 1000px;
+  width: 450px;
+  height: 350px;
   box-shadow: 0 25px 35px 0 rgba(0, 0, 0, 0.35);
   top: 10%;
   right: calc(50% - 250px);
@@ -120,7 +127,7 @@ a {
   user-select: none;
 }
 
-.fab2-icon {
+.fab2-icon2 {
   position: absolute;
   display: block;
   top: 50%;
@@ -141,7 +148,7 @@ a {
   display: none;
 }
 
-.active .fab2-icon {
+.active .fab2-icon2 {
   display: none;
 }
 
@@ -150,6 +157,11 @@ a {
 }
 
 .active .icon {
+  display: none;
+}
+
+
+.active .icon2 {
   display: none;
 }
 
@@ -168,6 +180,17 @@ a {
 }
 
 #fab-hdr h3 {
+  padding-left: 30px;
+}
+
+
+#fab-hdr4 {
+  position: absolute;
+  width: 100%;
+  background: #d35400;
+}
+
+#fab-hdr4 h3 {
   padding-left: 30px;
 }
 
@@ -190,4 +213,8 @@ a {
 .box {
   height: 300px;
   padding: 100px;
+}
+
+input::placeholder {
+  color: #D3D3D3;
 }

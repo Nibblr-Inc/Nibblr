@@ -75,6 +75,7 @@ router.route('/signup')
   })
   .post(function(req, res) {
     controller.users.post(req, res, function(err, signup) {
+      console.log('req.body', req.body);
       if (!err) {
         controller.users.get(req, res, function(err, userData) {
           if (err) {
@@ -85,7 +86,7 @@ router.route('/signup')
               req.session.user = userData[0].username;
               req.session.loggedIn = true;
               console.log('signup success')
-              res.redirect('/list');
+              res.send('signed up!')
             });
           }
         })
@@ -110,7 +111,7 @@ router.route('/login')
           req.session.user = userData[0].username;
           req.session.loggedIn = true;
           console.log('login success')
-          res.send('login success');
+          // res.send('login success');
         });
       } else {
         console.log('no userData')
@@ -123,7 +124,7 @@ router.route('/logout')
   .get(function(req, res) {
     req.session.destroy();
     console.log('logged out', req.session) //session should be undefined
-    res.redirect('/list');
+    res.send('logged out')
   })
 
 
