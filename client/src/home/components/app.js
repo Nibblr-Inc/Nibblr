@@ -28,7 +28,7 @@ angular.module('nibblr', [])
   //   console.log('search data: ', data);
   // })
 
-  this.login = login;
+  // this.login = login;
 
 }])
 
