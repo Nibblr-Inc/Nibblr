@@ -17,7 +17,7 @@ var dummyData = [
 
 angular.module('nibblr', [])
 
-.controller('AppCtrl', ["searchRestaurants", "eventsRequests", function(searchRestaurants, eventsRequests) {
+.controller('AppCtrl', ["searchRestaurants", "eventsRequests", "login", function(searchRestaurants, eventsRequests, login) {
   this.events = dummyData;
   eventsRequests.getEvents(function(data) {
     console.log('event data: ', data.data)
@@ -27,6 +27,9 @@ angular.module('nibblr', [])
   // searchRestaurants.search('pizza', function(data) {
   //   console.log('search data: ', data);
   // })
+
+  this.login = login;
+
 }])
 
 .directive('app', function() {
