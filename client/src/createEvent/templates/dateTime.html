@@ -1,24 +1,23 @@
-<div>
-  <div class="input-group"
-       moment-picker="ctrl.datepicker"
-       format="MM-DD">
+  <div class="input-group">
       <span class="input-group-addon">
           <i class="octicon octicon-calendar"></i>
       </span>
-      <input class="form-control"
-             placeholder="Select a date"
-             ng-model="ctrl.datepicker"
-             ng-model-options="{ updateOn: 'blur' }">
+      <input moment-picker
+      ng-model="ctrl.eventTime"
+      ng-model-options="{ updateOn: 'blur' }"
+      format="MM-DD"
+      start-view="month"
+      />
   </div>
-  <div class="input-group"
-       moment-picker="ctrl.timepicker"
-       format="HH:mm">
+  <div class="input-group">
       <span class="input-group-addon">
-          <i class="octicon octicon-clock"></i>
+          <i class="octicon octicon-calendar"></i>
       </span>
-      <input class="form-control"
-             placeholder="Select a time"
-             ng-model="ctrl.timepicker"
-             ng-model-options="{ updateOn: 'blur' }">
+      <input moment-picker
+      ng-model="ctrl.eventTime"
+      ng-model-options="{ updateOn: 'blur' }"
+      format="HH:mm"
+      start-view="month"
+             change="ctrl.handleDateChange(newValue)"
+      />
   </div>
-</div>
