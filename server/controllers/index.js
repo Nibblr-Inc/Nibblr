@@ -81,17 +81,20 @@ module.exports = {
     get: function(req, res, callback){
       var params = [req.body.username];
       models.login.get(params, function(err, result) {
-        if (err || result.length !== 1) { /* do something */ }
-        var hash = result[0].password;
-        auth.comparePasswords(req.body.password, hash).then((bool) => {
-          if (!bool) {
-            callback(false)
-            res.sendStatus(400);
-          } else {
-            callback(result);
-            res.sendStatus(201);
-          }
-        });
+        if (err || result.length !== 1) { /* do something */ console.log('err', result)}
+        else {
+          var hash = result[0].password;
+          auth.comparePasswords(req.body.password, hash).then((bool) => {
+            if (!bool) {
+              callback(false)
+              res.sendStatus(400);
+            } else {
+              callback(result);
+              res.sendStatus(201);
+            }
+          });
+
+        }
       })
     }
   }

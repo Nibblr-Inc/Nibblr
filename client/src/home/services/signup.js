@@ -11,6 +11,7 @@ angular.module('nibblr')
     data: body, // all that will be needed is {username: 'username', password: 'password'}
     }).then(function successCallback(response) {
       if (callback) {
+        console.log('response from signup', response)
         callback(response);
       }
     }, function errorCallback(response) {

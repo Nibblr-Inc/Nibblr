@@ -9,6 +9,7 @@ angular.module('nibblr')
     method: 'GET',
     dataType: 'json',
     }).then(function successCallback(response) {
+      sessionStorage.clear();
       if (callback) {
         callback(response);
       }

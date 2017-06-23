@@ -4,13 +4,7 @@ angular.module('nibblr')
   // TODO
 
   this.login = function(body, callback) {
-    // var makeQueryString = function(url, params) {
-    //   var paramsArray = []
-    //   for (p in params) {
-    //     paramsArray.push(p + '=' + params[p]);
-    //   }
-    //   return url + paramsArray.join('&');
-    // }
+
     $http({
     // body should be obj with keys: username, password
     url: 'http://localhost:3000/login?',
@@ -18,6 +12,8 @@ angular.module('nibblr')
     dataType: 'json',
     data: body,
     }).then(function successCallback(response) {
+      console.log('response from login', response);
+      sessionStorage.setItem('loggedIn', true);
       if (callback) {
         callback(response);
       }
