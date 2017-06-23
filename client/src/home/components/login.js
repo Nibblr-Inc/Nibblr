@@ -34,7 +34,7 @@ angular.module('nibblr')
 
       }
     },
-    templateUrl: 'client/src/templates/login.html'
+    templateUrl: 'client/src/home/templates/login.html'
   }
 
 })

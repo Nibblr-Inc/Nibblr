@@ -4,7 +4,7 @@ angular.module('nibblr')
   return {
     scope: {},
     controller: function() {},
-    templateUrl: 'client/src/templates/signup.html'
+    templateUrl: 'client/src/home/templates/signup.html'
   }
 
 })

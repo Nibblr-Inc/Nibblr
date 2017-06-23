@@ -24,9 +24,9 @@ angular.module('nibblr', [])
     this.events = data.data;
   }.bind(this))
   // search Restaurants search test passed
-  searchRestaurants.search('pizza', function(data) {
-    console.log('search data: ', data);
-  })
+  // searchRestaurants.search('pizza', function(data) {
+  //   console.log('search data: ', data);
+  // })
 }])
 
 .directive('app', function() {
@@ -36,7 +36,7 @@ angular.module('nibblr', [])
     controllerAs: 'ctrl',
     bindToController: true,
     restrict: 'E',
-    templateUrl: 'client/src/templates/app.html'
+    templateUrl: 'client/src/home/templates/app.html'
   }
 
 })

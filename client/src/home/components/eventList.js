@@ -9,7 +9,7 @@ angular.module('nibblr')
     },
     controllerAs: 'ctrl',
     bindToController: true,
-    templateUrl: 'client/src/templates/eventList.html'
+    templateUrl: 'client/src/home/templates/eventList.html'
   }
 
 });
