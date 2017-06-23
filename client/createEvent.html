@@ -35,7 +35,6 @@
   <script src="client/src/createEvent/services/searchRestaurants.js"></script>
   <script src="client/src/createEvent/components/nameDescription.js"></script>
   <script src="client/src/createEvent/components/searchRestaurants.js"></script>
-  <script src="client/src/createEvent/components/restaurant.js"></script>
 
 
 
@@ -161,11 +160,31 @@
               for (var i = 0; i < steps.length; i++) {
                 step = steps[i];
                 step.addEventListener('onstepnext', function (e) {
-                  stepper.next();
+                  console.log('this: ',this)
+                  if (this === steps[0]) {
+                    if (window.eventData[location]) {
+                      stepper.next();
+                    } else {
+                      alert('Choose a Location for your event ya dingus!')
+                    }
+                  } else if (this === steps[1]) {
+                    if (window.eventData.name.length === 0) {
+                      alert('Event Without a Name?  Really bro?')
+                    } else if (window.eventData.name.length > 50) {
+                      alert('Your event name is waaaaaay too long! Try again dingus.')
+                    } else if (window.eventData.description.length > 400) {
+                      alert('You can either shorten your description, or you can go home.')
+                    } else {
+                      stepper.next();
+                    }
+                  } else if (this === steps[2]) {
+                    stepper.next();
+                  }
                   console.log('event data: ',window.eventData)
                 });
               }
               element.addEventListener('onsteppercomplete', function (e) {
+
                 var toast = document.querySelector('#snackbar-stepper-complete');
 
                 if (!toast) return false;
@@ -175,6 +194,8 @@
                   timeout: 4000,
                   actionText: 'Ok'
                 });
+
+
               });
             };
 
