@@ -2,14 +2,20 @@ angular.module('nibblr')
 
 .directive('eventListEntry', function() {
   return {
-    scope: {
-      event: '<'
-    },
+    // scope: {
+    //   event: '<'
+    // },
     controller: function($scope) {
       $scope.showDescription = false;
       $scope.toggleDescription = function(e) {
         $scope.showDescription = !$scope.showDescription;
       };
+      $scope.parseDate = function() {
+        var date = new Date($scope.event.event_time);
+        return date.toDateString();
+      }
+      $scope.formattedDate =
+      console.log('eee',$scope)
     },
     controllerAs: 'ctrl',
     bindToController: true,
