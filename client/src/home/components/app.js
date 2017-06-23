@@ -27,12 +27,14 @@ angular.module('nibblr', [])
   // searchRestaurants.search('pizza', function(data) {
   //   console.log('search data: ', data);
   // })
+  var sessionTest = sessionStorage.getItem('loggedIn');
+  console.log('login status', sessionTest)
   $scope.showLogout = true;
 
   this.logoutClick = () => {
     console.log('in logout click')
     // $scope.showLogout = false;
-    console.log($scope.showLogout);
+    console.log('$scope.showLogout', $scope.showLogout);
     logout.logout(function(data){
       console.log('data', data);
       if (data.data === 'logged out') {

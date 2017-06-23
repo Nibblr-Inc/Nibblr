@@ -7,10 +7,10 @@ var router = express.Router();
 
 //Middleware function to check login status
 router.use('/submit', function(req, res, next){
-  if(req.session.loggedIn) {
+  if(req.session) {
     next();
   } else {
-    res.redirect('/list');
+    res.send('NO');
   }
 });
 
