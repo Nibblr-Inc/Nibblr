@@ -1,0 +1,22 @@
+<div>
+<form ng-submit="ctrl.submit(item)" style="padding-left: 10%">
+  <label>Search Restaurants:</label>
+  <br />
+  <input style="width: 80%;" ng-model="item" type="text" name="text">
+  <input type="submit">
+</form>
+
+<div style="padding-left: 10%; padding-right:10%; padding-top:3%; height:80%;width:80%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="height: 100%; width: 100%;">
+    <thead>
+      <tr>
+        <th>Restaurant</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="entry in ctrl.restaurants" ng-click="ctrl.handleClick(entry)"><td style="font-weight: bold">{{entry.name}}</td><td>{{entry.vicinity}}</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
