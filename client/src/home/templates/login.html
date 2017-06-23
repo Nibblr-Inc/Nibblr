@@ -12,19 +12,19 @@
 
     <div class="cntt">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="text1" />
+        <input class="mdl-textfield__input" type="text" ng-model="post.username" id="text1" />
         <label class="mdl-textfield__label" for="text2">Username</label>
       </div>
 
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="text2" />
+        <input class="mdl-textfield__input" type="text" ng-model="post.password" id="text2" />
         <label class="mdl-textfield__label" for="text2">Password</label>
       </div>
     </div>
 
     <div class="btn-wrapper">
       <button class="mdl-button mdl-js-button" id="cancel">Cancel</button>
-      <button class="mdl-button mdl-js-button mdl-button--primary" id="submit" ng-click="ctrl.handleClick()">Submit</button>
+      <button class="mdl-button mdl-js-button mdl-button--primary" id="submit" ng-click="ctrl.handleClick(post.username, post.password)">Submit</button>
     </div>
 
   </form>
