@@ -11,7 +11,7 @@ module.exports = {
                       left outer join rsvp r on e.id = r.event_id \
                       left outer join users u \
                       on r.user_id = u.id \
-                      group by e.id, e.name, e.event_time, e.location, e.google_place_id, e.description, e.creatorID, e.address, e.category, e.username';
+                      group by e.id, e.name, e.event_time, e.location, e.google_place_id, e.description, e.creatorID, e.address, e.category, e.username, e.photo_url';
 
       // if given a specific event_id, example: params = [1]
       if (params.length) {
@@ -28,8 +28,8 @@ module.exports = {
     },
     post: function (params, callback) {
       // create a new event
-      var queryStr = 'insert into events (name, event_time, location, google_place_id, description, creatorID, address, category) \
-                      value (?, ?, ?, ?, ?, ?, ?, ?)';
+      var queryStr = 'insert into events (name, event_time, location, google_place_id, description, creatorID, address, category, photo_url) \
+                      value (?, ?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
       });

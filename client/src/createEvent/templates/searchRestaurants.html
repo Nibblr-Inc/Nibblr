@@ -6,16 +6,16 @@
   <input type="submit">
 </form>
 
-<div style="padding-left: 10%; padding-right:10%; padding-top:3%; height:80%;width:80%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+<div style="padding-left: 10%; padding-right:20%; padding-top:3%; height:80%;width:80%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
   <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="height: 100%; width: 100%;">
     <thead>
       <tr>
-        <th>Restaurant</th>
-        <th>Address</th>
+        <th class="mdl-data-table__cell--non-numeric">Restaurant</th>
+        <th class="mdl-data-table__cell--non-numeric">Address</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="entry in ctrl.restaurants" ng-click="ctrl.handleClick(entry)"><td style="font-weight: bold">{{entry.name}}</td><td>{{entry.vicinity}}</td></tr>
+      <tr ng-repeat="entry in ctrl.restaurants" ng-click="ctrl.handleClick(entry)"><td  class="mdl-data-table__cell--non-numeric" style="font-weight: bold">{{entry.name}}</td><td class="mdl-data-table__cell--non-numeric">{{entry.vicinity}}</td></tr>
     </tbody>
   </table>
 </div>
