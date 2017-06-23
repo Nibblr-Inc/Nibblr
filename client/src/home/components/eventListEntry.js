@@ -7,10 +7,9 @@ angular.module('nibblr')
     },
     controller: function($scope) {
       $scope.showDescription = false;
-      $scope.toggleDescription = function() {
+      $scope.toggleDescription = function(e) {
         $scope.showDescription = !$scope.showDescription;
       };
-      console.log('eventListEntry',this)
     },
     controllerAs: 'ctrl',
     bindToController: true,
