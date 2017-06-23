@@ -110,7 +110,7 @@ router.route('/login')
           req.session.user = userData[0].username;
           req.session.loggedIn = true;
           console.log('login success')
-          res.redirect('/list');
+          res.send('login success');
         });
       } else {
         console.log('no userData')

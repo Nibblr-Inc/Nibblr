@@ -10,7 +10,7 @@ angular.module('nibblr')
       //toggle these two when a login is successful
       this.handleClick = () => {
         //figure out how to make login service work here
-        console.log('in handle click') 
+        console.log('in handle click')
         login.login({username: 'mike', password: 'abc'}, function(data){
           console.log(data);
         });
