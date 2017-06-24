@@ -144,7 +144,7 @@
 
         </section>
 
-        <!-- script -->
+
         <script>
           (function () {
             // Stepper non-linear demonstration
@@ -201,14 +201,13 @@
                   actionText: 'Ok'
                 });
 
-
-
               });
             };
 
             var submit = function() {
               if (window.confirm("Are you sure you want to publish this event.  You can not edit it after submitting, because we didn't have time to make an edit event feature.")) {
                 $.post('http://localhost:3000/submit', window.eventData)
+                window.location.href = "http://localhost:3000/"
               }
             }
             window.complete = false;
@@ -216,24 +215,9 @@
             window.eventData = {};
           })();
         </script>
-        <!--
-        <div>
-          <menu />
-        </div>
-         -->
         <div>
           <event-list events="ctrl.events"/>
         </div>
-        <!--
-        <div>
-          <event-view />
-        </div>
-         -->
-         <!--
-        <div>
-          <create-event />
-        </div>
-         -->
       </div>
     </main>
   </div>

@@ -17,17 +17,13 @@ var dummyData = [
 
 angular.module('nibblr', [])
 
-.controller('AppCtrl', ["$scope", "searchRestaurants", "eventsRequests", "logout", function($scope, searchRestaurants, eventsRequests, logout) {
+.controller('AppCtrl', ["$scope", "eventsRequests", "logout", function($scope, eventsRequests, logout) {
   this.events = dummyData;
   eventsRequests.getEvents(function(data) {
     console.log('event data: ', data.data)
     this.events = data.data;
   }.bind(this))
-  // search Restaurants search test passed
-  // searchRestaurants.search('pizza', function(data) {
-  //   console.log('search data: ', data);
-  // })
-  // $scope.hideLogin = false;
+
   $scope.showLogout = true;
 
   // var sessionTest = sessionStorage.getItem('loggedIn');
