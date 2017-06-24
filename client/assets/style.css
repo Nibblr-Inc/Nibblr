@@ -24,6 +24,9 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+.event-time {
+  font-weight: 500;
+}
 
 
 
