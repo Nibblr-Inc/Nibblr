@@ -44,7 +44,7 @@ var checkSession = function(req, res, next){
   if(req.session.loggedIn) {
     next();
   } else {
-    res.redirect('/');
+    res.sendStatus(530);
   }
 }
 //place check session in as middleware

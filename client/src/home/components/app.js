@@ -44,6 +44,12 @@ angular.module('nibblr', [])
       }
     });
   }
+
+  this.redirectToCreate = () => {
+    eventsRequests.redirectToCreate();
+  }
+
+
 }])
 
 .directive('app', function() {
