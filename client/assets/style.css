@@ -26,7 +26,10 @@ event-list-entry {
 }
 .event-grid {
   max-width: 960px;
+}
+main {
   background-color: #eee;
+
 }
 
 a {
