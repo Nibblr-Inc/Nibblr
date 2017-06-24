@@ -8,8 +8,13 @@ angular.module('nibblr')
     // },
     controller: function($scope) {
       $scope.showDescription = false;
+      $scope.rsvpClick = false;
       $scope.toggleDescription = function(e) {
-        $scope.showDescription = !$scope.showDescription;
+        if (!$scope.rsvpClick) {
+          $scope.showDescription = !$scope.showDescription;
+        } else {
+          $scope.rsvpClick = false;
+        }
       };
       $scope.parseDate = function() {
         var date = new Date($scope.event.event_time);
@@ -19,6 +24,8 @@ angular.module('nibblr')
         var date = new Date($scope.event.event_time);
         return date.toLocaleTimeString().replace(':00 ',' ');
       }
+
+      console.log('$scope in eventList: ', $scope)
 
     },
     controllerAs: 'ctrl',
