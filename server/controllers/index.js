@@ -13,13 +13,7 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var user_id;
-      if (req.session) {
-        user_id = req.session.user_id
-      } else {
-        user_id = req.body.user_id
-      }
-      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, user_id, req.body.address, req.body.photo_url];
+      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, req.session.user_id, req.body.address, req.body.photo_url];
       models.events.post(params, function(err, results) {
         console.log('in event post')
         if (err) {
@@ -71,13 +65,7 @@ module.exports = {
       })
     },
     post: function(req, res) {
-      var user_id;
-      if (req.session) {
-        user_id = req.session.user_id
-      } else {
-        user_id = req.body.user_id
-      }
-      var params = [user_id, req.body.event_id];
+      var params = [req.session.user_id, req.body.event_id];
       models.rsvp.post(params, function(err, results) {
         if (err) { /* do something */ }
         else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
