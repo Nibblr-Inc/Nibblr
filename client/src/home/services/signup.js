@@ -14,7 +14,7 @@ angular.module('nibblr')
       if (callback) {
         console.log('response from signup', response)
         if (response.data === 'signed up!') {
-          sessionStorage.setItem('loggedIn', true);
+          // sessionStorage.setItem('loggedIn', true);
           $window.location.reload();
         }
         callback(response);
