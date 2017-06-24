@@ -15,22 +15,24 @@ module.exports = {
 
       // if given a specific event_id, example: params = [1]
       // include hidePastEvents if only want upcoming events
+      console.log('params in models: ', params)
       if (params.hidePastEvents || params.event_id) {
         var concatToQuery = '';
         if (params.hidePastEvents && !params.event_id) {
-          concatToQuery = 'where event_time > NOW()'
+          concatToQuery = ' having event_time > NOW()'
           queryStr = queryStr.concat(concatToQuery);
           db.query(queryStr, function(err, data) {
             callback(err, data);
           });
         } else {
           if (!params.hidePastEvents && params.event_id) {
-            concatToQuery = 'where e.id = ?'
+            concatToQuery = ' having e.id = ?'
           } else if (params.hidePastEvents && params.event_id) {
-            concatToQuery = 'where e.id = ? and event_time > NOW()'
+            concatToQuery = ' having e.id = ? and event_time > NOW()'
           }
           queryStr = queryStr.concat(concatToQuery);
-          db.query(queryStr, [params.event_id], function(err, data) {
+          db.query(queryStr, [Number(params.event_id)], function(err, data) {
+            console.log('data: ', data)
             callback(err, data);
           });
         }

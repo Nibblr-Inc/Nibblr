@@ -3,7 +3,8 @@ angular.module('nibblr')
 .directive('eventListEntry', function() {
   return {
     // scope: {
-    //   event: '<'
+    //   event: '<',
+    //
     // },
     controller: function($scope) {
       $scope.showDescription = false;
