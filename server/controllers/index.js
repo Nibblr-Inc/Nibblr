@@ -5,8 +5,8 @@ module.exports = {
 
   events: {
     get: function (req, res) {
-      // create a params variable for if event id is specified
-      var params = [];
+      // create a params object for with event_id and hidePastEvents if specified 
+      var params = {};
       models.events.get(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);
@@ -26,7 +26,7 @@ module.exports = {
 
   users: {
     get: function (req, res, callback) {
-      // make an array length 1 with user_id in it if specified for params
+
       var params = [req.body.username];
       models.users.get(params, function(err, results) {
         if (callback) {
