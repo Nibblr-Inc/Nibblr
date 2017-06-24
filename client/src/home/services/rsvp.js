@@ -15,6 +15,7 @@ angular.module('nibblr')
       }
     }, function errorCallback(response) {
       console.log('=( error')
+      callback(response);
     });
   }
 
