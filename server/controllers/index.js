@@ -72,7 +72,7 @@ module.exports = {
       })
     },
     delete: function(params, callback) {
-      var params = [req.query.event_id, req.query.user_id];
+      var params = [req.query.event_id, req.session.user_id];
       models.rsvp.delete(params, function(err, results) {
         if (err) { /* do something */ }
         res.sendStatus(201);
