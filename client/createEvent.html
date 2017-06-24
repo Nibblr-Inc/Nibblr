@@ -161,6 +161,7 @@
                 step = steps[i];
                 step.addEventListener('onstepnext', function (e) {
                   console.log('this: ',this)
+                  if (window.complete) { submit()}
                   if (this === steps[0]) {
                     if (window.eventData.location) {
                       stepper.next();
@@ -185,7 +186,10 @@
               }
               element.addEventListener('onsteppercomplete', function (e) {
                 console.log('about to post')
-                $.post('http://localhost:3000/submit', window.eventData)
+                window.complete = true;
+                submit();
+
+
 
                 var toast = document.querySelector('#snackbar-stepper-complete');
 
@@ -202,6 +206,12 @@
               });
             };
 
+            var submit = function() {
+              if (window.confirm("Are you sure you want to publish this event.  You can not edit it after submitting, because we didn't have time to make an edit event feature.")) {
+                $.post('http://localhost:3000/submit', window.eventData)
+              }
+            }
+            window.complete = false;
             window.addEventListener('load', demoNonLinear);
             window.eventData = {};
           })();

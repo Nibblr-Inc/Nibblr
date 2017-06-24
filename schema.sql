@@ -14,8 +14,8 @@ CREATE TABLE users (
 CREATE TABLE events (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name varchar(50) NOT NULL,
-  -- event_time datetime NOT NULL,
-  event_time varchar(100) NOT NULL,
+  event_time datetime NOT NULL,
+  -- event_time varchar(100) NOT NULL,
   location varchar(100) NOT NULL,
   google_place_id varchar(100),
   description varchar(400),
