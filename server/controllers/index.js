@@ -66,7 +66,7 @@ module.exports = {
       })
     },
     post: function(req, res) {
-      var params = [req.session.user_id, req.body.event_id, req.body.rsvp_user_id, req.body.creatorID];
+      var params = [req.session.user_id, req.body.event_id];
       models.rsvp.post(params, function(err, results) {
         if (err) { /* do something */ res.sendStatus(400)}
         else if (res) {
