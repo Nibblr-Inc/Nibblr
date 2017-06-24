@@ -36,8 +36,8 @@ exports.nearbySearch = function(req, res) {
 
 exports.placePhotos = function(req, res) {
   var key = google_api_key;
-  var height = req.query.height || 400;
-  var width = req.query.width || 400;
+  var height = req.query.height || 10000;
+  var width = req.query.width || 512;
   var photo_reference = req.query.photo_reference;
 
   var url = "https://maps.googleapis.com/maps/api/place/photo?" + "maxheight=" + height + "&maxwidth=" + width + "&photoreference=" + photo_reference + "&key=" + key;
