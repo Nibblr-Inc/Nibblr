@@ -6,8 +6,10 @@ angular.module('nibblr')
       event: '='
     },
 
-    controller: function(rsvpRequests, eventsRequests) {
+    controller: function(rsvpRequests, eventsRequests, $scope) {
       this.rsvpClick = (id) => {
+        console.log('$scope.$parent.$parent.rsvpClick',$scope.$parent.$parent.rsvpClick)
+        $scope.$parent.$parent.rsvpClick = true;
         console.log('in rsvp click function')
         rsvpRequests.postRSVP({event_id: id}, function(data){
           if (data.status === 201) {
@@ -26,6 +28,9 @@ angular.module('nibblr')
           }
         }.bind(this))
       }
+
+      console.log('$scope in eventView: ', $scope)
+
 
     },
     controllerAs: 'ctrl',
