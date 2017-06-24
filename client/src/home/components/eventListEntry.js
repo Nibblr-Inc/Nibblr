@@ -19,7 +19,6 @@ angular.module('nibblr')
         var date = new Date($scope.event.event_time);
         return date.toLocaleTimeString().replace(':00 ',' ');
       }
-      console.log('eee',$scope)
 
     },
     controllerAs: 'ctrl',

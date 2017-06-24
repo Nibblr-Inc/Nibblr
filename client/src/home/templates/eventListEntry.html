@@ -18,11 +18,9 @@
     <img src={{event.photo_url}} alt="" />
   </div>
   <div class="mdl-card__title">
-      <h2 class="mdl-card__title-text">{{parseDate()}}</h2>
-      <div class="mdl-layout-spacer"></div>
-      <span class="mdl-card__title-text event-time">{{parseTime()}}</span>
+    <h2 class="mdl-card__title-text">{{event.name}} at {{event.location}}</h2>
   </div>
-  <div class="mdl-card__supporting-text">{{event.name}}</div>
+  <div class="mdl-card__supporting-text">{{parseDate()}} <span style="font-weight: bold;">{{parseTime()}}<span/></div>
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="toggleDescription()" ng-if="!showDescription">
       More Info

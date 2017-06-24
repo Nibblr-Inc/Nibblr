@@ -66,10 +66,11 @@ module.exports = {
       })
     },
     post: function(req, res) {
-      var params = [req.session.user_id, req.body.event_id];
+      var params = [req.session.user_id, req.body.event_id, req.body.rsvp_user_id, req.body.creatorID];
       models.rsvp.post(params, function(err, results) {
-        if (err) { /* do something */ }
-        else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
+        if (err) { /* do something */ res.sendStatus(400)}
+        else if (res) {
+          res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
       })
     },
     delete: function(params, callback) {
