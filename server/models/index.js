@@ -14,11 +14,26 @@ module.exports = {
                       group by e.id, e.name, e.event_time, e.location, e.google_place_id, e.description, e.creatorID, e.address, e.category, e.username, e.photo_url';
 
       // if given a specific event_id, example: params = [1]
-      if (params.length) {
-        queryStr = queryStr.concat(' where e.id = ?');
-        db.query(queryStr, params, function(err, data) {
-          callback(err, data);
-        });
+      // include hidePastEvents if only want upcoming events
+      if (params.hidePastEvents || params.event_id) {
+        var concatToQuery = '';
+        if (params.hidePastEvents && !params.event_id) {
+          concatToQuery = 'where event_time > NOW()'
+          queryStr = queryStr.concat(concatToQuery);
+          db.query(queryStr, function(err, data) {
+            callback(err, data);
+          });
+        } else {
+          if (!params.hidePastEvents && params.event_id) {
+            concatToQuery = 'where e.id = ?'
+          } else if (params.hidePastEvents && params.event_id) {
+            concatToQuery = 'where e.id = ? and event_time > NOW()'
+          }
+          queryStr = queryStr.concat(concatToQuery);
+          db.query(queryStr, [params.event_id], function(err, data) {
+            callback(err, data);
+          });
+        }
       } else {
         db.query(queryStr, function(err, data) {
           console.log('data in model: ', data);
