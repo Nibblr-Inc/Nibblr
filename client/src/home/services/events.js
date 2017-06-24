@@ -35,8 +35,11 @@ angular.module('nibblr')
 
   this.redirectToCreate = function() {
     $http({
-    url: 'http://localhost:3000/create?'
-    // body = obj{} w/ keys: name, event_time, location, google_place_id, description, creatorID, address, category
-  })
+    url: 'http://localhost:3000/create'
+  }).then(function successCallback(response) {
+      window.location.href = "http://localhost:3000/create"
+  }, function errorCallback() {
+    alert('Must be Logged In to Create Event')
+  });
   }
 });
