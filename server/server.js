@@ -28,19 +28,6 @@ app.get('/', function (req, res) {
 })
 
 
-
-// var checkSession = function(req, res, next){
-//   if(req.session) {
-//     next();
-//   } else {
-//     res.redirect('/');
-//   }
-// }
-//place check session in as middleware
-app.get('/create', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/createEvent.html'));
-})
-
 //Create session
 
 app.use(session({
@@ -51,6 +38,20 @@ app.use(session({
 }));
 
 app.use('/', router);
+
+var checkSession = function(req, res, next){
+  console.log('REQ.SESSION', req.session);
+  if(req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}
+//place check session in as middleware
+app.get('/create', checkSession, function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/createEvent.html'));
+})
+
 
 app.listen(3000, function () {
   console.log('Listening on port 3000!')

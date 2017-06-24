@@ -7,10 +7,10 @@ var router = express.Router();
 
 //Middleware function to check login status
 router.use('/submit', function(req, res, next){
-  if(req.session) {
+  if(req.session.loggedIn) {
     next();
   } else {
-    res.redirect('/');
+    res.send('please log in');
   }
 });
 
@@ -81,13 +81,12 @@ router.route('/signup')
           if (err) {
             res.sendStatus(404);
           } else {
-            req.session.regenerate(function() {
-              req.session.user_id = userData[0].id;
-              req.session.user = userData[0].username;
-              req.session.loggedIn = true;
-              console.log('signup success')
-              res.send('signed up!')
-            });
+            req.session.user_id = userData[0].id;
+            req.session.user = userData[0].username;
+            req.session.loggedIn = true;
+            console.log('session', req.session)
+            console.log('signup success')
+            res.send('signed up!') //`signed up with user ${req.session.user_id}`
           }
         })
       } else {
@@ -102,17 +101,18 @@ router.route('/login')
     res.send('login test - get')
   })
   .post(function(req, res) {
-    console.log('req.session', req.session)
     controller.login.get(req, res, function(userData) {
       if (userData) {
         console.log('userData', userData)
-        req.session.regenerate(function() {
+        // req.session.regenerate(function() {
           req.session.user_id = userData[0].id;
           req.session.user = userData[0].username;
           req.session.loggedIn = true;
+          req.session.save()
+          console.log('session', req.session)
           console.log('login success')
-          // res.send('login success');
-        });
+          // res.send(`user_id ${req.session.user_id}`);
+        // });
       } else {
         console.log('no userData')
         res.send('Password does not match username - please try again')
