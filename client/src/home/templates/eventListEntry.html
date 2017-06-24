@@ -18,13 +18,11 @@
     <img src="/client/assets/Cool-Lion.jpg" alt="" />
   </div>
   <div class="mdl-card__title">
-    <div class="event-time">
       <h2 class="mdl-card__title-text">{{parseDate()}}</h2>
-    </div>
+      <div class="mdl-layout-spacer"></div>
+      <span class="mdl-card__title-text event-time">{{parseTime()}}</span>
   </div>
-  <div class="mdl-card__supporting-text">
-    <p class="mdl-typography--body-1">{{event.name}}</p>
-  </div>
+  <div class="mdl-card__supporting-text">{{event.name}}</div>
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="toggleDescription()" ng-if="!showDescription">
       More Info
@@ -35,7 +33,7 @@
   </div>
   <div class="mdl-card__menu">
     <!-- Number badge on icon -->
-    <div class="material-icons mdl-badge mdl-badge--overlap" data-badge={{ctrl.event.rsvp_user_id.length}}>account_box</div>
+    <div class="material-icons mdl-badge mdl-badge--overlap" data-badge={{event.rsvp_user_id.length}} ng-if="event.rsvp_user_id.length">account_box</div>
 
   </div>
 </div>
