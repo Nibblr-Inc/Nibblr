@@ -12,7 +12,7 @@ angular.module('nibblr')
           if (data.status === 201) {
             alert('Success!')
           } else {
-            alert('Oops! Something went wrong')
+            alert('Login to RSVP')
           }
         })
       }
