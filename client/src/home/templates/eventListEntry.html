@@ -29,9 +29,12 @@
       <event-view event="event" ng-click="toggleDescription()"/>
     </div>
   </div>
-  <div class="mdl-card__menu">
+  <div id={{event.id}} class="mdl-card__menu">
     <!-- Number badge on icon -->
-    <div class="material-icons mdl-badge mdl-badge--overlap" data-badge={{event.rsvp_user_id.length}} ng-if="event.rsvp_user_id.length">account_box</div>
+    <div class="material-icons mdl-badge mdl-badge--overlap" data-badge={{event.rsvp_user_id.split(',').length}} ng-if="event.rsvp_user_id.length">account_box</div>
+    <div class="mdl-tooltip mdl-tooltip--large" for={{event.id}}>
+      thigns
+    </div>
 
   </div>
 </div>
