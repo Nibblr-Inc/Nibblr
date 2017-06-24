@@ -19,10 +19,16 @@ angular.module('nibblr', [])
 
 .controller('AppCtrl', ["$scope", "eventsRequests", "logout", function($scope, eventsRequests, logout) {
   this.events = dummyData;
-  eventsRequests.getEvents(function(data) {
+
+  eventsRequests.getEvents({}, function(data) {
     console.log('event data: ', data.data)
     this.events = data.data;
   }.bind(this))
+
+  console.log('scope of test', $scope.test)
+
+  console.log('$scope in app: ', $scope)
+
 
   $scope.showLogout = true;
 

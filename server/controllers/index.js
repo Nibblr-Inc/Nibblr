@@ -6,7 +6,8 @@ module.exports = {
   events: {
     get: function (req, res) {
       // create a params object for with event_id and hidePastEvents if specified
-      var params = {};
+      console.log('req.query in controllers events get: ', req.query)
+      var params = req.query;
       models.events.get(params, function(err, results) {
         if (err) { /* do something */ }
         res.json(results);

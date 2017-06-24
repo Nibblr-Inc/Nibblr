@@ -2,10 +2,17 @@ angular.module('nibblr')
 
 .service('eventsRequests', function($http){
   // TODO
+  var makeQueryString = function(url, params) {
+    var paramsArray = []
+    for (p in params) {
+      paramsArray.push(p + '=' + params[p]);
+    }
+    return url + paramsArray.join('&');
+  }
 
-  this.getEvents = function(callback) {
+  this.getEvents = function(query, callback) {
     $http({
-    url: 'http://localhost:3000/list?',
+    url: makeQueryString('http://localhost:3000/list?', query),
     method: 'GET',
     dataType: 'json',
     }).then(function successCallback(response) {
