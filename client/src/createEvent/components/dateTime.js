@@ -7,9 +7,13 @@ angular.module('createEvent')
     controller: function() {
 
       this.handleDateChange = function(item) {
-        window.eventData.event_time = item._d.toISOString();
+        window.eventData.event_time = this.formatDate(item._d);
+        console.log('item',item);
       };
 
+      this.formatDate = function(date) {
+        return date.toISOString().replace('T', ' ').slice(0, -5);
+      }
     },
     controllerAs: 'ctrl',
     bindToController: true,
