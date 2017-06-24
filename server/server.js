@@ -27,6 +27,16 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 })
 
+
+
+// var checkSession = function(req, res, next){
+//   if(req.session) {
+//     next();
+//   } else {
+//     res.redirect('/');
+//   }
+// }
+//place check session in as middleware
 app.get('/create', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/createEvent.html'));
 })

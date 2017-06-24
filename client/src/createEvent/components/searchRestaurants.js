@@ -14,7 +14,7 @@ angular.module('createEvent')
   this.handleClick = function(entry) {
     console.log('entry: ', entry);
     this.restaurants = [entry];
-    window.eventData[location] = entry.name;
+    window.eventData.location = entry.name;
     window.eventData.google_place_id = entry.place_id;
     window.eventData.address = entry.vicinity;
     searchRestaurants.getImage({photo_reference: entry.photos[0].photo_reference}, function(response) {
@@ -25,6 +25,7 @@ angular.module('createEvent')
       var idx = right.indexOf('">')
       var result = right.slice(0, idx);
       window.eventData.photo_url = result;
+      console.log('result: ', result);
     })
   }
 

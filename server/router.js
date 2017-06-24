@@ -10,7 +10,7 @@ router.use('/submit', function(req, res, next){
   if(req.session) {
     next();
   } else {
-    res.send('NO');
+    res.redirect('/');
   }
 });
 
