@@ -13,13 +13,15 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      // change 1 to createID for req.session
+      // change 1 to createID from req.session
       console.log('req.session: ', req.session)
       var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, 1, req.body.address, req.body.photo_url];
       models.events.post(params, function(err, results) {
         console.log('in event post')
-        if (err) { console.log('err: ', err) }
-        else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
+        if (err) {
+          console.log('err: ', err)
+          if (res) { res.sendStatus(400) }
+        } else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
       });
     }
   },
