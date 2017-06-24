@@ -28,8 +28,8 @@ module.exports = {
     },
     post: function (params, callback) {
       // create a new event
-      var queryStr = 'insert into events (name, event_time, location, google_place_id, description, creatorID, address, category, photo_url) \
-                      value (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      var queryStr = 'insert into events (name, event_time, location, google_place_id, description, creatorID, address, photo_url) \
+                      value (?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(queryStr, params, function(err, results) {
         callback(err, results);
       });

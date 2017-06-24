@@ -13,7 +13,9 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, req.body.creatorID, req.body.address, req.body.category, req.body.photo_url];
+      // change 1 to createID for req.session
+      console.log('req.session: ', req.session)
+      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, 1, req.body.address, req.body.photo_url];
       models.events.post(params, function(err, results) {
         console.log('in event post')
         if (err) { console.log('err: ', err) }
