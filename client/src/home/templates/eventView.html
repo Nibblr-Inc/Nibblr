@@ -1,8 +1,6 @@
 <div class="event-view">
-  <span class="mdl-typography--title">name: {{ctrl.event.name}}</span>
-  <p class="mdl-typography--body-1">category: {{ctrl.event.category}}</p>
-  <h3>time: {{ctrl.event.event_time}}</h3>
   <p>address: {{ctrl.event.address}}</p>
   <p>rsvp: {{ctrl.event.rsvp_usernames}}</p>
-  <button class="rsvp-btn mdl-button mdl-js-button" ng-click="rsvpClick()">RSVP</button>
+  <p>description: {{ctrl.event.description}}</p>
+  <button class="rsvp-btn mdl-button mdl-js-button" ng-click="rsvpClick(ctrl.event.id)">RSVP</button>
 </div>

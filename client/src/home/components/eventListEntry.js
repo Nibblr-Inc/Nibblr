@@ -16,6 +16,7 @@ angular.module('nibblr')
       }
       $scope.formattedDate =
       console.log('eee',$scope)
+
     },
     controllerAs: 'ctrl',
     bindToController: true,
