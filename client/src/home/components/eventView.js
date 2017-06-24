@@ -5,7 +5,11 @@ angular.module('nibblr')
     scope: {
       event: '<'
     },
-    controller: function() {},
+    controller: function(rsvpRequests) {
+      this.rsvpClick = () => {
+        
+      }
+    },
     controllerAs: 'ctrl',
     bindToController: true,
     templateUrl: 'client/src/home/templates/eventView.html'
