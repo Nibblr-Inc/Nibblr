@@ -65,7 +65,7 @@ module.exports = {
       })
     },
     post: function(req, res) {
-      var params = [req.body.user_id, req.body.event_id];
+      var params = [req.session.user_id, req.body.event_id];
       models.rsvp.post(params, function(err, results) {
         if (err) { /* do something */ }
         else if (res) { res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)

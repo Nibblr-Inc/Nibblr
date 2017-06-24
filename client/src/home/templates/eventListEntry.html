@@ -23,15 +23,14 @@
     </div>
   </div>
   <div class="mdl-card__supporting-text">
-    <p class="mdl-typography--body-1">{{ctrl.event.name}}</p>
-    {{ctrl.event.description}}
+    <p class="mdl-typography--body-1">{{event.name}}</p>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-click="toggleDescription()" ng-if="!showDescription">
       More Info
     </a>
     <div ng-if="showDescription">
-      <event-view event="ctrl.event" ng-click="toggleDescription()"/>
+      <event-view event="event" ng-click="toggleDescription()"/>
     </div>
   </div>
   <div class="mdl-card__menu">
