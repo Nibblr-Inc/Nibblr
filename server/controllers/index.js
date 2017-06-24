@@ -13,9 +13,7 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      // change 1 to createID from req.session
-      console.log('req.session: ', req.session)
-      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, 1, req.body.address, req.body.photo_url];
+      var params = [req.body.name, req.body.event_time, req.body.location, req.body.google_place_id, req.body.description, req.session.user_id, req.body.address, req.body.photo_url];
       models.events.post(params, function(err, results) {
         console.log('in event post')
         if (err) {
@@ -105,11 +103,3 @@ module.exports = {
     }
   }
 };
-
-// module.exports.users.post({body: {username: 'mike', password: 'abc'}})
-// module.exports.users.post({body: {username: 'nate', password: 'abc'}})
-// module.exports.users.post({body: {username: 'molly', password: 'abc'}})
-
-// module.exports.login.get({body: {username: 'molly', password: 'abc'}})
-// body = obj{} w/ keys: name, event_time, location, google_place_id, description, creatorID, address, category
-// module.exports.events.post({body: {name: 'first event', event_time: '2017-07-04 12:30:00', location: 'Home Slice', google_place_id: 'madeupid', description: 'this is a test', creatorID: 1, address: '304 W Mary St', category: 'pizza'}})
