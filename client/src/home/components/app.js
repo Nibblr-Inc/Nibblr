@@ -30,8 +30,8 @@ angular.module('nibblr', [])
   // $scope.hideLogin = false;
   $scope.showLogout = true;
 
-  var sessionTest = sessionStorage.getItem('loggedIn');
-  console.log('login status', sessionTest)
+  // var sessionTest = sessionStorage.getItem('loggedIn');
+  // console.log('login status', sessionTest)
 
   console.log('$scope.showLogout', $scope.showLogout)
 

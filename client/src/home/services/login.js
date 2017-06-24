@@ -15,7 +15,7 @@ angular.module('nibblr')
       console.log('response from login', response);
       if (callback) {
         if (response.data === 'Created') {
-          sessionStorage.setItem('loggedIn', true);
+          // sessionStorage.setItem('loggedIn', true);
           $window.location.reload();
         }
         callback(response);

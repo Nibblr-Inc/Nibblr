@@ -9,7 +9,7 @@ angular.module('nibblr')
     method: 'GET',
     dataType: 'json',
     }).then(function successCallback(response) {
-      sessionStorage.setItem('loggedIn', false);
+      // sessionStorage.setItem('loggedIn', false);
       $window.location.reload();
       if (callback) {
         callback(response);
