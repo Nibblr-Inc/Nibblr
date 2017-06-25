@@ -9,12 +9,14 @@ angular.module('nibblr')
     controller: function(rsvpRequests, eventsRequests, $scope) {
       this.button = "RSVP";
       rsvpRequests.getSessionUser(function(user_id) {
-        var user_ids = this.event.rsvp_user_id.split(',')
-        if (user_ids.includes(user_id.data.toString())) {
-          this.button = "Cancel";
-          console.log("this.cancelButton",this.cancelButton)
-        } else {
-          this.button = "RSVP";
+        if (this.event.rsvp_user_id) {          
+          var user_ids = this.event.rsvp_user_id.split(',')
+          if (user_ids.includes(user_id.data.toString())) {
+            this.button = "Cancel";
+            console.log("this.cancelButton",this.cancelButton)
+          } else {
+            this.button = "RSVP";
+          }
         }
       }.bind(this))
 
