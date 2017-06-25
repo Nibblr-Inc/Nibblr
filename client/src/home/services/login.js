@@ -25,4 +25,16 @@ angular.module('nibblr')
       $window.location.reload();
     });
   }
+
+  this.getSessionUser = function(callback) {
+    $http({
+    url: 'http://localhost:3000/sessionuser?',
+    method: 'GET',
+    dataType: 'json',
+    }).then(function successCallback(response) {
+      callback(response)
+    }, function errorCallback(response) {
+      console.log('=( error in logout')
+    });
+  }
 });

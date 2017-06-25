@@ -99,7 +99,12 @@ module.exports = {
     },
     delete: function(params, callback) {
       var queryStr = 'delete from rsvp where event_id = ? and user_id = ?'
+      console.log('delete querySTR: ', queryStr)
+      console.log('params: ',params)
       db.query(queryStr, params, function(err, results) {
+        console.log('in models for delete rsvp')
+        console.log('error: ', err)
+        console.log('results: ', results)
         callback(err, results);
       })
     }
