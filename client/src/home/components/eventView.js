@@ -7,26 +7,51 @@ angular.module('nibblr')
     },
 
     controller: function(rsvpRequests, eventsRequests, $scope) {
+      this.button = "RSVP";
+      rsvpRequests.getSessionUser(function(user_id) {
+        var user_ids = this.event.rsvp_user_id.split(',')
+        if (user_ids.includes(user_id.data.toString())) {
+          this.button = "Cancel";
+          console.log("this.cancelButton",this.cancelButton)
+        } else {
+          this.button = "RSVP";
+        }
+      }.bind(this))
+
       this.rsvpClick = (id) => {
         console.log('$scope.$parent.$parent.rsvpClick',$scope.$parent.$parent.rsvpClick)
         $scope.$parent.$parent.rsvpClick = true;
         console.log('in rsvp click function')
-        rsvpRequests.postRSVP({event_id: id}, function(data){
-          if (data.status === 201) {
-            alert('Success!')
-            eventsRequests.getEvents({event_id: id}, function({data}) {
-              console.log('data: ', data[0].rsvp_usernames)
-              console.log('event data: ', this.event)
-              this.event.rsvp_usernames = data[0].rsvp_usernames;
-            }.bind(this))
+        if (this.button === "RSVP") {
+          rsvpRequests.postRSVP({event_id: id}, function(data){
+            if (data.status === 201) {
+              alert('Success!')
+              this.button = "Cancel";
+              eventsRequests.getEvents({event_id: id}, function({data}) {
+                this.event.rsvp_usernames = data[0].rsvp_usernames;
+              }.bind(this))
 
-          } else if (data.status === 400) {
-            alert("You're already RSVP'd for this event")
+            } else if (data.status === 400) {
+              alert("You're already RSVP'd for this event")
 
-          } else {
-            alert('Please login to RSVP')
-          }
-        }.bind(this))
+            } else {
+              alert('Please login to RSVP')
+            }
+          }.bind(this))
+        } else {
+          rsvpRequests.cancelRSVP({event_id: id}, function(data) {
+            console.log('cancelRSVP data: ', data)
+            if (data.status === 201) {
+              alert('You have been removed from RSVP List')
+              this.button = "RSVP";
+              eventsRequests.getEvents({event_id: id}, function({data}) {
+                this.event.rsvp_usernames = data[0].rsvp_usernames;
+              }.bind(this))
+           } else {
+             alert('There was an error canceling your RSVP. I\'m sorry, but you have to go.')
+           }
+         }.bind(this));
+        }
       }
 
       console.log('$scope in eventView: ', $scope)

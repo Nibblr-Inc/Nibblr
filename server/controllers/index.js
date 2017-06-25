@@ -73,10 +73,11 @@ module.exports = {
           res.sendStatus(201) }  // need this else if for seeding db (there's no res when seeding)
       })
     },
-    delete: function(params, callback) {
+    delete: function(req, res, callback) {
       var params = [req.query.event_id, req.session.user_id];
+      console.log('params in controller: ', params)
       models.rsvp.delete(params, function(err, results) {
-        if (err) { /* do something */ }
+        if (err) { console.log('err: ', err) }
         res.sendStatus(201);
       })
     }

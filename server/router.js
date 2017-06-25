@@ -128,6 +128,14 @@ router.route('/logout')
   })
 
 
+router.route('/sessionuser')
+  .get(function(req, res) {
+    if (req.session) {
+      res.json(req.session.user_id)
+    } else {
+      res.sendStatus(530)
+    }
+  })
 
 
 
