@@ -6,17 +6,17 @@ restaurant enthusiasts or if you're simply tired of eating alone, Nibblr is for 
 Nibblr was created with love by Mike, Nate and Molly using the following stack:
 
 
-*AngularJS
+* AngularJS
 
-*JQuery
+* JQuery
 
-*Node/Express
+* Node/Express
 
-*MySQL
+* MySQL
 
-*Material Design Lite
+* Material Design Lite
 
-*Google Places API
+* Google Places API
 
 **NOTE:** Before running the project, be sure to change the MySQL login information in
 server/db/index/js to match your MySQL login.
