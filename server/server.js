@@ -11,7 +11,7 @@ var app = express()
 app.use(bodyParser());
 app.use(morgan('dev'));
 
-// app.use(express.static(__dirname));
+// set headers to allow cross-origin requests
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 
 app.use('/', express.static(path.join(__dirname, '../')))
 
-
+// Serve static files
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '../client/index.html'));
@@ -37,10 +37,13 @@ app.use(session({
   cookie: { maxAge: null }
 }));
 
+// implement router
+
 app.use('/', router);
 
+//middleware to check login
+
 var checkSession = function(req, res, next){
-  console.log('REQ.SESSION', req.session);
   if(req.session.loggedIn) {
     next();
   } else {
