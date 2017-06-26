@@ -37,7 +37,7 @@ angular.module('nibblr')
             } else if (data.status === 400) {
               alert("You're already RSVP'd for this event")
             } else {
-              alert('Please login to RSVP')
+              alert('Please login or log on to RSVP')
             }
           }.bind(this))
         } else {
