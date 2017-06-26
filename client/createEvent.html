@@ -29,7 +29,7 @@
 </head>
 
 <body>
-  <!-- Always shows a header, even in smaller screens. -->
+
 
   <script src="client/src/createEvent/components/app.js"></script>
   <script src="client/src/createEvent/components/dateTime.js"></script>
@@ -44,31 +44,18 @@
     <div id="overlay"></div>
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <!-- Title -->
+
         <a href="http://localhost:3000/" <span class="mdl-layout-title">Nibblr</span></a>
-        <!-- Add spacer, to align navigation to the right -->
+
         <div class="mdl-layout-spacer"></div>
         <login />
-        <!-- Navigation. We hide it in small screens. -->
+
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <!--
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-           -->
+
         </nav>
       </div>
     </header>
-    <!-- <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">Title</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-      </nav>
-    </div> -->
+
     <main class="mdl-layout__content">
       <div class="page-content"><!-- Content goes here -->
         <!-- style -->
@@ -163,13 +150,13 @@
                 step.addEventListener('onstepnext', function (e) {
                   console.log('this: ',this)
                   if (window.complete) { submit()}
-                  if (this === steps[0]) {
+                  if (this === steps[0]) { // step 1
                     if (window.eventData.location) {
                       stepper.next();
                     } else {
                       alert('Choose a Location for your event ya dingus!')
                     }
-                  } else if (this === steps[1]) {
+                  } else if (this === steps[1]) { // step 2
                     if (window.eventData.name.length === 0) {
                       alert('Event Without a Name?  Really bro?')
                     } else if (window.eventData.name.length > 50) {
@@ -179,7 +166,7 @@
                     } else {
                       stepper.next();
                     }
-                  } else if (this === steps[2]) {
+                  } else if (this === steps[2]) { //  step 3
                     stepper.next();
                   }
                   console.log('event data: ',window.eventData)
@@ -205,14 +192,17 @@
               });
             };
 
+            // make sure user wants to submit the event
             var submit = function() {
               if (window.confirm("Are you sure you want to publish this event.  You can not edit it after submitting, because we didn't have time to make an edit event feature.")) {
                 $.post('http://localhost:3000/submit', window.eventData)
                 window.location.href = "http://localhost:3000/"
               }
             }
+            // window.complete means all steps have been completed
             window.complete = false;
             window.addEventListener('load', demoNonLinear);
+            // eventData is object that holds all event info
             window.eventData = {};
           })();
         </script>
