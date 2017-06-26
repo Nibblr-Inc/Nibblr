@@ -2,7 +2,7 @@ event-list-entry {
   margin: 0 auto;
 }
 .demo-card-wide.mdl-card {
-  width: 512px;
+  width: 768px;
   float: left;
   margin: 1rem;
   position: relative;
@@ -29,7 +29,12 @@ event-list-entry {
 }
 main {
   background-color: #eee;
+}
 
+.event-view-text {
+  padding: 8px;
+  margin: 0px;
+  width: 50%;
 }
 
 a {
