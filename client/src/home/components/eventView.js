@@ -7,9 +7,10 @@ angular.module('nibblr')
     },
 
     controller: function(rsvpRequests, eventsRequests, $scope) {
-      this.button = "RSVP";
+      // this.button = "RSVP";
       rsvpRequests.getSessionUser(function(user_id) {
-        if (this.event.rsvp_user_id) {          
+        console.log('in get session User')
+        if (this.event.rsvp_user_id) {
           var user_ids = this.event.rsvp_user_id.split(',')
           if (user_ids.includes(user_id.data.toString())) {
             this.button = "Cancel";
@@ -35,7 +36,6 @@ angular.module('nibblr')
 
             } else if (data.status === 400) {
               alert("You're already RSVP'd for this event")
-
             } else {
               alert('Please login to RSVP')
             }
