@@ -28,13 +28,14 @@ angular.module('nibblr')
         if (this.button === "RSVP") {
           rsvpRequests.postRSVP({event_id: id}, function(data){
             if (data.status === 201) {
-              alert('Success!')
               this.button = "Cancel";
+              alert('Success!')
               eventsRequests.getEvents({event_id: id}, function({data}) {
                 this.event.rsvp_usernames = data[0].rsvp_usernames;
               }.bind(this))
 
             } else if (data.status === 400) {
+              this.button = "Cancel";
               alert("You're already RSVP'd for this event")
             } else {
               alert('Please login or log on to RSVP')
